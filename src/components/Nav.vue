@@ -1,20 +1,86 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const mobileMenuOpen = ref(false)
+
+const toggleMobileMenu = () => {
+  mobileMenuOpen.value = !mobileMenuOpen.value
+}
+
+const closeMobileMenu = () => {
+  mobileMenuOpen.value = false
+}
+</script>
 
 <template>
   <nav>
-    <ul>
-      <li><router-link to="/">Home</router-link></li> 
-      <li><router-link to="/recipes">Recipes</router-link></li> 
-      <li><router-link to="/planner">Planner</router-link></li> 
-    </ul>
+    <div class="nav-container">
+      <router-link to="/" class="logo">MealPlan</router-link>
+      
+      <button class="hamburger" @click="toggleMobileMenu" :aria-label="mobileMenuOpen ? 'Close menu' : 'Open menu'">
+        <span v-if="!mobileMenuOpen">☰</span>
+        <span v-else>✕</span>
+      </button>
+
+      <ul :class="{ 'mobile-open': mobileMenuOpen }">
+        <li><router-link to="/" @click="closeMobileMenu">Home</router-link></li> 
+        <li><router-link to="/recipes" @click="closeMobileMenu">Recipes</router-link></li> 
+        <li><router-link to="/planner" @click="closeMobileMenu">Planner</router-link></li> 
+      </ul>
+    </div>
   </nav>  
 </template>
 
 <style scoped>
+  nav {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+  }
+  .logo {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+    padding: 0.5rem 1rem;
+    position: relative;
+    z-index: 1001;
+  }
+  .logo::before {
+    content: '';
+    position: absolute;
+    top: 0.2rem;
+    left: 0.3rem;
+    right: 0.3rem;
+    bottom: 0.1rem;
+    background-color: var(--accent-color);
+    transform: rotate(-10deg) skewX(-12deg) skewY(4deg);
+    border-radius: .5rem 0.2rem 0.5rem 0.8rem;
+    box-shadow: 0 0 12px rgba(192, 255, 58, 0.4);
+    z-index: -1;
+  }
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+  }
   ul {
     display: flex;
     gap: 1rem;
-    justify-content: center;
+    margin: 0;
+    padding: 0;
   }
   li {
     margin: 0;
@@ -42,5 +108,36 @@
     border-radius: .5rem 0.2rem 0.5rem 0.8rem;
     box-shadow: 0 0 12px rgba(192, 255, 58, 0.4);
     z-index: -1;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 576px) {
+    .hamburger {
+      display: block;
+    }
+
+    ul {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.98);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    ul.mobile-open {
+      transform: translateX(0);
+    }
+
+    li a {
+      font-size: 1.5rem;
+    }
   }
 </style>
