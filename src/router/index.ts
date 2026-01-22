@@ -10,18 +10,25 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: Home,
+      meta: { title: 'Home' }
     },
     {
       path: '/recipes',
       name: 'recipes',
       component: Recipes,
+      meta: { title: 'Recipes' }
     },
     {
       path: '/planner',
       name: 'planner',
       component: Planner,
+      meta: { title: 'Planner' }
     }
   ],
+})
+
+router.afterEach((to) => {
+  document.title = to.meta.title ? `${to.meta.title} - MealPlan` : 'MealPlan'
 })
 
 export default router
