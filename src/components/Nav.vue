@@ -33,9 +33,16 @@ const closeMobileMenu = () => {
 
 <style scoped>
   nav {
+    position: sticky;
+    top: 0;
     display: flex;
     justify-content: center;
     padding: 1rem;
+    background-color: rgba(254, 254, 254, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(224, 224, 224, 0.3);
+    z-index: 100;
   }
   .nav-container {
     display: flex;
