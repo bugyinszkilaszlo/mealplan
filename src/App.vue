@@ -1,15 +1,20 @@
 <script setup lang="ts">
   import { RouterView } from 'vue-router';
-  import Nav from './components/Nav.vue';
-  import Footer from './components/Footer.vue';
+  import TopNav from './components/TopNav.vue';
+  import BottomFooter from './components/BottomFooter.vue';
 </script>
 
 <template>
-  <Nav />
+  <TopNav />
   <main>
     <RouterView />
   </main>
-  <Footer />
+  <BottomFooter />
 </template>
 
-<style scoped></style>
+<style scoped>
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+</style>
