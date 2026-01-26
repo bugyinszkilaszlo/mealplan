@@ -1,12 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{
+  url: string,
+  image: string,
+  title: string,
+  description: string,
+}>()
+</script>
 
 <template>
-  <router-link to="">
+  <router-link :to="url">
     <article>
-      <img src="/meals/01.jpg" alt="Name lorem ipsum dolorsitamet" />
+      <img :src="image" :alt="title" />
       <div>
-        <h2>Name lorem ipsum dolorsitamet</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, deserunt.</p>
+        <h2>{{ title }}</h2>
+        <p>{{ description }}</p>
       </div>
     </article>
   </router-link>
