@@ -51,7 +51,9 @@ h2 {
 h2 span {
   display: inline-block;
   padding: 12px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-top-left-radius: 18px;
   border-bottom-right-radius: 18px;
 }

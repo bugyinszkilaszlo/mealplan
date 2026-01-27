@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import { RouterView } from 'vue-router';
-  import TopNav from './components/TopNav.vue';
-  import BottomFooter from './components/BottomFooter.vue';
+import { RouterView } from 'vue-router';
+import TopNav from './components/TopNav.vue';
+import BottomFooter from './components/BottomFooter.vue';
 </script>
 
 <template>
@@ -13,8 +13,9 @@
 </template>
 
 <style scoped>
-  main {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px
+}
 </style>
