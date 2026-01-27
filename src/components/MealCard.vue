@@ -8,51 +8,64 @@ defineProps<{
 </script>
 
 <template>
-  <router-link :to="url">
-    <article>
-      <img :src="image" :alt="title" />
-      <div>
-        <h2>{{ title }}</h2>
-        <p>{{ description }}</p>
-      </div>
-    </article>
-  </router-link>
+  <article>
+    <router-link :to="url" :style="{ backgroundImage: `url(${image})` }">
+      <h2><span>{{ title }}</span></h2>
+    </router-link>
+    <button class="cta">Add to MealPlan</button>
+  </article>
 </template>
 
 <style scoped>
-a {
-  display: block;
+article {
+  position: relative;
   border-radius: 20px;
   overflow: hidden;
-  opacity: .8;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-a:hover {
-  opacity: 1;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  opacity: .8;
 }
 
-article {
-  background-color: #fff;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+article:hover {
+  opacity: 1;
 }
 
-img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-bottom-right-radius: 20px;
-}
-
-div {
-  padding: 16px;
+a {
+  display: block;
+  padding-bottom: 50%;
+  background-position: center;
+  background-size: cover;
 }
 
 h2 {
+  position: absolute;
+  top: 4px;
+  left: 4px;
   margin: 0;
+  padding: 0;
   font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+h2 span {
+  display: inline-block;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-top-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+}
+
+button {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  padding: 12px;
+  border-radius: 18px 0 18px 0;
+  opacity: .9;
+}
+
+button:hover {
+  opacity: 1;
 }
 </style>

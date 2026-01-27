@@ -74,9 +74,19 @@ const demoData = [
 <style scoped>
 ul {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 32px;
-  list-style: none;
-  padding: 0;
+  padding: 0 32px;
+}
+
+@media (min-width: 576px) {
+  ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 </style>

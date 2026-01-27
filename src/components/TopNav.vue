@@ -126,7 +126,6 @@ a.router-link-active::before {
   z-index: -1;
 }
 
-/* Mobile styles */
 @media (max-width: 576px) {
   .hamburger {
     display: block;
@@ -134,23 +133,24 @@ a.router-link-active::before {
 
   ul {
     position: fixed;
-    inset: 0;
-    width: 100vw;
+    inset: 0 0 0 100vw;
+    width: 0;
     height: 100vh;
     background-color: rgba(255, 255, 255, 0.98);
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
     z-index: 1000;
     margin: 0;
     padding: 0;
+    overflow: hidden;
   }
 
   ul.mobile-open {
-    transform: translateX(0);
+    width: 100vw;
+    left: 0;
   }
 
   li a {
