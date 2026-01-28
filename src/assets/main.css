@@ -44,8 +44,8 @@ button {
 .cta {
   background-color: var(--accent-color);
   border: none;
-  padding: 12px 24px;
+  padding: 16px 24px;
   font-size: 1rem;
   font-weight: bold;
-  border-radius: 4px;
+  border-radius: 18px;
 }

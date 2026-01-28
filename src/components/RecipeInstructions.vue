@@ -17,6 +17,7 @@ defineProps<{
         </li>
       </ol>
     </div>
+    <button class="cta">Add to MealPlan</button>
   </section>
 </template>
 
@@ -37,6 +38,20 @@ section h2 {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+button {
+  display: block;
+  margin: 20px 20px 20px 20px;
+  width: calc(100% - 40px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 576px) {
+  button {
+    width: calc(50% - 40px);
+    margin: 20px auto;
+  }
+}
+
 @media (min-width: 1024px) {
   section {
     margin: 0;
@@ -44,6 +59,16 @@ section h2 {
 
   .instructions {
     grid-area: instructions;
+  }
+
+  button {
+    margin: 32px auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  button {
+    margin: 48px auto;
   }
 }
 

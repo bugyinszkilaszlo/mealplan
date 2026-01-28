@@ -26,6 +26,7 @@ defineProps<{
         <strong>Difficulty</strong><span>{{ difficulty }}</span>
       </div>
     </div>
+    <button class="cta">Add to MealPlan</button>
   </header>
 </template>
 
@@ -62,7 +63,7 @@ h1 span {
 
 .recipe-meta {
   position: absolute;
-  bottom: 10px;
+  bottom: 60px;
   right: 10px;
   left: 10px;
   display: grid;
@@ -73,8 +74,6 @@ h1 span {
   background-color: rgba(160, 160, 160, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom-right-radius: 18px;
-  border-bottom-left-radius: 18px;
 }
 
 .meta-item {
@@ -94,6 +93,22 @@ h1 span {
   display: block;
 }
 
+button {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0.8;
+}
+
+button:hover {
+  opacity: 1;
+}
+
 @media (min-width: 576px) {
   header {
     padding-top: 100%;
@@ -110,6 +125,18 @@ h1 span {
   .recipe-meta {
     left: auto;
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 576px) {
+  button {
+    right: auto;
+    border-radius: 0 18px 0 18px;
+  }
+
+  .recipe-meta {
+    bottom: 10px;
+    border-radius: 18px 0 18px 0;
   }
 }
 
