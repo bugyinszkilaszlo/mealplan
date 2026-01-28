@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import RecipeHeader from '@/components/RecipeHeader.vue'
-import RecipeIngredients from '@/components/RecipeIngredients.vue'
-import RecipeInstructions from '@/components/RecipeInstructions.vue'
-import RecipeTips from '@/components/RecipeTips.vue'
+import RecipeHeader from '@/components/recipe/RecipeHeader.vue'
+import RecipeIngredients from '@/components/recipe/RecipeIngredients.vue'
+import RecipeInstructions from '@/components/recipe/RecipeInstructions.vue'
+import RecipeTips from '@/components/recipe/RecipeTips.vue'
 import type { Recipe } from '@/types/recipe'
 
 const recipe: Recipe = {
