@@ -42,14 +42,14 @@ const demoData = [
     title: 'Grilled Salmon',
     description: 'Fresh Atlantic salmon with lemon butter and roasted vegetables.',
     image: '/meals/06.jpg',
-    url: '#nogo',
+    url: 'recipe',
   },
   {
     id: 7,
     title: 'Mushroom Risotto',
     description: 'Creamy Italian rice cooked with wild mushrooms and parmesan.',
     image: '/meals/07.jpg',
-    url: '#nogo',
+    url: 'recipe',
   },
   {
     id: 8,
