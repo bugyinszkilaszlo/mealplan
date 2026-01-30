@@ -1,0 +1,39 @@
+.tips {
+  margin: 2rem 0;
+}
+
+.tips h2 {
+  margin: 0 0 -7px 20px;
+  font-size: 2rem;
+}
+
+.sectionContent {
+  padding: 20px;
+  background-color: #fafafa;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 1024px) {
+  .tips {
+    margin: 0;
+    grid-area: tips;
+  }
+}
+
+.sectionContent ul li {
+  margin: 24px 0 0 20px;
+  list-style-type: decimal;
+  font-weight: 600;
+}
+
+.sectionContent ul li h3 {
+  margin: 0 0 8px 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+}
+
+.sectionContent ul li p {
+  margin: 0 0 12px 0;
+  font-weight: 400;
+}

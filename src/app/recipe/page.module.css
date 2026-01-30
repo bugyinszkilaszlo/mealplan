@@ -1,0 +1,18 @@
+@media (min-width: 1024px) {
+  .sections {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+      "ingredients instructions"
+      "tips instructions";
+    gap: 32px;
+    margin: 32px 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .sections {
+    gap: 48px;
+    margin: 48px 0;
+  }
+}

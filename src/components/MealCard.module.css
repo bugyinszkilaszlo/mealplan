@@ -1,0 +1,53 @@
+.article {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  opacity: .8;
+}
+
+.article:hover {
+  opacity: 1;
+}
+
+.link {
+  display: block;
+  padding-bottom: 50%;
+  background-position: center;
+  background-size: cover;
+}
+
+.article h2 {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.article h2 span {
+  display: inline-block;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+}
+
+.article button {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  padding: 12px;
+  border-radius: 18px 0 18px 0;
+  opacity: .9;
+}
+
+.article button:hover {
+  opacity: 1;
+}

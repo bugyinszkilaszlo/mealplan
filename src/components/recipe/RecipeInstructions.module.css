@@ -1,0 +1,63 @@
+.instructions {
+  margin: 2rem 0;
+}
+
+.instructions h2 {
+  margin: 0 0 -7px 20px;
+  font-size: 2rem;
+}
+
+.sectionContent {
+  padding: 20px;
+  background-color: #fafafa;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.instructions button {
+  display: block;
+  margin: 20px 20px 20px 20px;
+  width: calc(100% - 40px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 576px) {
+  .instructions button {
+    width: calc(50% - 40px);
+    margin: 20px auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .instructions {
+    margin: 0;
+    grid-area: instructions;
+  }
+
+  .instructions button {
+    margin: 32px auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .instructions button {
+    margin: 48px auto;
+  }
+}
+
+.sectionContent ol li {
+  margin: 24px 0 0 20px;
+  list-style-type: decimal;
+  font-weight: 600;
+}
+
+.sectionContent ol li h3 {
+  margin: 0 0 8px 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+}
+
+.sectionContent ol li p {
+  margin: 0 0 12px 0;
+  font-weight: 400;
+}
