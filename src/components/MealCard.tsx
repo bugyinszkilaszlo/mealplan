@@ -3,18 +3,23 @@ import styles from './MealCard.module.css';
 
 interface MealCardProps {
   url: string;
-  image: string;
+  thumbnail: string;
   title: string;
-  description: string;
 }
 
-export default function MealCard({ url, image, title, description }: MealCardProps) {
+export default function MealCard({ url, thumbnail, title }: MealCardProps) {
   return (
     <article className={styles.article}>
-      <Link href={url} className={styles.link} style={{ backgroundImage: `url(${image})` }}>
-        <h2><span>{title}</span></h2>
+      <Link
+        href={url}
+        className={styles.link}
+        style={{ backgroundImage: `url(${thumbnail})` }}
+      >
+        <h2>
+          <span>{title}</span>
+        </h2>
       </Link>
-      <button className="cta">Add to MealPlan</button>
+      <button className='cta'>Add to MealPlan</button>
     </article>
   );
 }
