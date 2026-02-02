@@ -5,6 +5,23 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
+.instructions ol li {
+  margin: 24px 0 0 20px;
+  list-style-type: decimal;
+  font-weight: 600;
+}
+
+.instructions ol li h3 {
+  margin: 0 0 8px 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+}
+
+.instructions ol li p {
+  margin: 0 0 12px 0;
+  font-weight: 400;
+}
+
 @media (min-width: 576px) {
   .instructions button {
     width: calc(50% - 40px);
@@ -26,30 +43,4 @@
   .instructions button {
     margin: 48px auto;
   }
-}
-
-.instructions ol li {
-  margin: 24px 0 0 20px;
-  list-style-type: decimal;
-}
-
-.instructions ol li h3 {
-  margin: 0 0 8px 0;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
-}
-
-.instructions ol li p {
-  margin: 0 0 12px 0;
-}
-
-.sectionContent ol li h3 {
-  margin: 0 0 8px 0;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
-}
-
-.sectionContent ol li p {
-  margin: 0 0 12px 0;
-  font-weight: 400;
 }

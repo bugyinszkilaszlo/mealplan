@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
-import { Roboto, Shadows_Into_Light } from 'next/font/google';
+import { Nunito_Sans, Shadows_Into_Light } from 'next/font/google';
 import TopNav from '@/components/layout/TopNav';
 import BottomFooter from '@/components/layout/BottomFooter';
 import './globals.css';
 
-const roboto = Roboto({
+const nunitoSans = Nunito_Sans({
   weight: ['400', '700'],
   subsets: ['latin'],
-  variable: '--font-roboto',
+  variable: '--font-nunito-sans',
 });
 
 const shadowsIntoLight = Shadows_Into_Light({
@@ -30,9 +30,9 @@ export default function RootLayout({
   return (
     <html
       lang='en'
-      className={`${roboto.variable} ${shadowsIntoLight.variable}`}
+      className={`${nunitoSans.variable} ${shadowsIntoLight.variable}`}
     >
-      <body className={roboto.className}>
+      <body className={nunitoSans.className}>
         <TopNav />
         <main>{children}</main>
         <BottomFooter />
