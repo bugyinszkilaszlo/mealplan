@@ -1,7 +1,7 @@
-import Header from '@/components/recipe/Header';
-import Ingredients from '@/components/recipe/Ingredients';
-import Instructions from '@/components/recipe/Instructions';
-import Tips from '@/components/recipe/Tips';
+import Header from '@/components/pages/recipe/Header';
+import Ingredients from '@/components/pages/recipe/Ingredients';
+import Instructions from '@/components/pages/recipe/Instructions';
+import Tips from '@/components/pages/recipe/Tips';
 import type { Recipe } from '@/types/recipe';
 import styles from './page.module.css';
 

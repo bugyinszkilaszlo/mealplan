@@ -3,10 +3,10 @@
 import { useState } from 'react';
 import styles from './page.module.css';
 import { Ingredient, Instruction, Tip, RecipeFormState } from '@/types/recipe';
-import BasicInfoSection from '@/components/new-recipe/BasicInfoSection';
-import IngredientsSection from '@/components/new-recipe/IngredientsSection';
-import InstructionsSection from '@/components/new-recipe/InstructionsSection';
-import TipsSection from '@/components/new-recipe/TipsSection';
+import BasicInfoSection from '@/components/pages/new-recipe/BasicInfoSection';
+import IngredientsSection from '@/components/pages/new-recipe/IngredientsSection';
+import InstructionsSection from '@/components/pages/new-recipe/InstructionsSection';
+import TipsSection from '@/components/pages/new-recipe/TipsSection';
 
 const NewRecipe = () => {
   const [formData, setFormData] = useState<RecipeFormState>({
