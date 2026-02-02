@@ -1,4 +1,4 @@
-import MealCard from '@/components/MealCard';
+import MealCard from '@/components/ui/MealCard';
 import styles from './page.module.css';
 
 const demoData = [
