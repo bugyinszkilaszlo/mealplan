@@ -28,13 +28,15 @@ const TipsSection = ({ tips, onAdd, onRemove, onUpdate }: TipsSectionProps) => {
               rows={2}
             />
           </div>
-          <button
-            type='button'
-            onClick={() => onRemove(index)}
-            className={styles.removeButton}
-          >
-            Remove
-          </button>
+          {tips.length > 1 && (
+            <button
+              type='button'
+              onClick={() => onRemove(index)}
+              className={styles.removeButton}
+            >
+              Remove
+            </button>
+          )}
         </div>
       ))}
 
