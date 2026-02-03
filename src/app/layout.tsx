@@ -19,7 +19,7 @@ const shadowsIntoLight = Shadows_Into_Light({
 export const metadata: Metadata = {
   title: 'MealPlan',
   description:
-    'Plan your meals, organize your recipes, and simplify your cooking journey.',
+    'Tervezd meg az étkezéseidet, rendszerezd a receptjeidet, és egyszerűsítsd a főzési utadat.',
 };
 
 export default function RootLayout({

@@ -11,7 +11,7 @@ interface TipsSectionProps {
 
 const TipsSection = ({ tips, onAdd, onRemove, onUpdate }: TipsSectionProps) => {
   return (
-    <Box title='Tips (Optional)'>
+    <Box title='Tippek (Opcionális)'>
       {tips.map((tip, index) => (
         <div key={index} className={styles.arrayItem}>
           <div className={styles.tipFields}>
@@ -19,12 +19,12 @@ const TipsSection = ({ tips, onAdd, onRemove, onUpdate }: TipsSectionProps) => {
               type='text'
               value={tip.title}
               onChange={(e) => onUpdate(index, 'title', e.target.value)}
-              placeholder='Tip title'
+              placeholder='Tipp címe'
             />
             <textarea
               value={tip.description}
               onChange={(e) => onUpdate(index, 'description', e.target.value)}
-              placeholder='Tip description'
+              placeholder='Tipp leírása'
               rows={2}
             />
           </div>
@@ -34,14 +34,14 @@ const TipsSection = ({ tips, onAdd, onRemove, onUpdate }: TipsSectionProps) => {
               onClick={() => onRemove(index)}
               className={styles.removeButton}
             >
-              Remove
+              Eltávolítás
             </button>
           )}
         </div>
       ))}
 
       <button type='button' onClick={onAdd} className={styles.addButton}>
-        + Add Tip
+        + Tipp hozzáadása
       </button>
     </Box>
   );

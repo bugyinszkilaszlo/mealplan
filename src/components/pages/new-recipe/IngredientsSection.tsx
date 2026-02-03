@@ -20,7 +20,7 @@ const IngredientsSection = ({
   onUpdate,
 }: IngredientsSectionProps) => {
   return (
-    <Box title='Ingredients'>
+    <Box title='Hozzávalók'>
       {ingredients.map((ingredient, index) => (
         <div key={index} className={styles.arrayItem}>
           <div className={styles.ingredientFields}>
@@ -28,7 +28,7 @@ const IngredientsSection = ({
               type='text'
               value={ingredient.name}
               onChange={(e) => onUpdate(index, 'name', e.target.value)}
-              placeholder='Ingredient name'
+              placeholder='Hozzávaló neve'
               required
             />
             <input
@@ -37,7 +37,7 @@ const IngredientsSection = ({
               onChange={(e) =>
                 onUpdate(index, 'amount', Number(e.target.value))
               }
-              placeholder='Amount'
+              placeholder='Mennyiség'
               step='0.01'
               required
             />
@@ -45,7 +45,7 @@ const IngredientsSection = ({
               type='text'
               value={ingredient.unit}
               onChange={(e) => onUpdate(index, 'unit', e.target.value)}
-              placeholder='Unit (lbs, cups, etc.)'
+              placeholder='Mértékegység (kg, csésze, stb.)'
             />
           </div>
           {ingredients.length > 1 && (
@@ -54,14 +54,14 @@ const IngredientsSection = ({
               onClick={() => onRemove(index)}
               className={styles.removeButton}
             >
-              Remove
+              Eltávolítás
             </button>
           )}
         </div>
       ))}
 
       <button type='button' onClick={onAdd} className={styles.addButton}>
-        + Add Ingredient
+        + Hozzávaló hozzáadása
       </button>
     </Box>
   );

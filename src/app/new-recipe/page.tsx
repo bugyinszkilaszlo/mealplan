@@ -115,7 +115,7 @@ const NewRecipe = () => {
 
   return (
     <div className={styles.container}>
-      <h1>New Recipe</h1>
+      <h1>Új recept</h1>
 
       <form onSubmit={handleSubmit} className={styles.form}>
         <BasicInfoSection
@@ -163,7 +163,7 @@ const NewRecipe = () => {
         />
 
         <button type='submit' className={styles.submitButton}>
-          Create Recipe
+          Recept létrehozása
         </button>
       </form>
     </div>

@@ -19,7 +19,7 @@ export default function MealCard({ url, thumbnail, title }: MealCardProps) {
           <span>{title}</span>
         </h2>
       </Link>
-      <button className='cta'>Add to MealPlan</button>
+      <button className='cta'>Hozzáad</button>
     </article>
   );
 }

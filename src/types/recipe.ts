@@ -20,7 +20,7 @@ export interface Recipe {
   prepTime: string;
   cookTime: string;
   servings: number;
-  difficulty: 'Easy' | 'Medium' | 'Hard';
+  difficulty: 'Könnyű' | 'Közepes' | 'Nehéz';
   ingredients: Ingredient[];
   instructions: Instruction[];
   tips: Tip[];

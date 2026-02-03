@@ -8,7 +8,7 @@ interface InstructionsProps {
 
 export default function Instructions({ instructions }: InstructionsProps) {
   return (
-    <Box title='Instructions' className={styles.instructions}>
+    <Box title='Elkészítés' className={styles.instructions}>
       <ol>
         {instructions.map((instruction, index) => (
           <li key={index}>

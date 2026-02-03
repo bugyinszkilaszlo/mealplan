@@ -29,7 +29,7 @@ export default function TopNav() {
         <button
           className={styles.hamburger}
           onClick={toggleMobileMenu}
-          aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-label={mobileMenuOpen ? 'Menü bezárása' : 'Menü megnyitása'}
         >
           <span>{mobileMenuOpen ? '✕' : '☰'}</span>
         </button>
@@ -41,7 +41,7 @@ export default function TopNav() {
               onClick={closeMobileMenu}
               className={isActive('/') ? styles.active : ''}
             >
-              Home
+              Kezdőlap
             </Link>
           </li>
           <li>
@@ -50,7 +50,7 @@ export default function TopNav() {
               onClick={closeMobileMenu}
               className={isActive('/recipes') ? styles.active : ''}
             >
-              Recipes
+              Receptek
             </Link>
           </li>
         </ul>

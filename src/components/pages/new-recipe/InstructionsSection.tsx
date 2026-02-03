@@ -16,7 +16,7 @@ const InstructionsSection = ({
   onUpdate,
 }: InstructionsSectionProps) => {
   return (
-    <Box title='Instructions'>
+    <Box title='Elkészítés'>
       {instructions.map((instruction, index) => (
         <div key={index} className={styles.arrayItem}>
           <div className={styles.instructionFields}>
@@ -24,13 +24,13 @@ const InstructionsSection = ({
               type='text'
               value={instruction.title}
               onChange={(e) => onUpdate(index, 'title', e.target.value)}
-              placeholder='Step title'
+              placeholder='Lépés címe'
               required
             />
             <textarea
               value={instruction.description}
               onChange={(e) => onUpdate(index, 'description', e.target.value)}
-              placeholder='Step description'
+              placeholder='Lépés leírása'
               rows={3}
               required
             />
@@ -41,14 +41,14 @@ const InstructionsSection = ({
               onClick={() => onRemove(index)}
               className={styles.removeButton}
             >
-              Remove
+              Eltávolítás
             </button>
           )}
         </div>
       ))}
 
       <button type='button' onClick={onAdd} className={styles.addButton}>
-        + Add Instruction
+        + Lépés hozzáadása
       </button>
     </Box>
   );

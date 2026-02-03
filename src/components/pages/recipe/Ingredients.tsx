@@ -8,7 +8,7 @@ interface IngredientsProps {
 
 export default function Ingredients({ ingredients }: IngredientsProps) {
   return (
-    <Box title='Ingredients' className={styles.ingredients}>
+    <Box title='Hozzávalók' className={styles.ingredients}>
       <ul>
         {ingredients.map((ingredient, index) => (
           <li key={index}>

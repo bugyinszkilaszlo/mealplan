@@ -8,7 +8,7 @@ interface TipsProps {
 
 export default function Tips({ tips }: TipsProps) {
   return (
-    <Box title='Tips & Tricks' className={styles.tips}>
+    <Box title='Tippek és trükkök' className={styles.tips}>
       <ul>
         {tips.map((tip, index) => (
           <li key={index}>

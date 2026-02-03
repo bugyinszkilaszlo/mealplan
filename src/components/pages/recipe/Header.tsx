@@ -27,23 +27,23 @@ export default function Header({
       </h1>
       <div className={styles.recipeMeta}>
         <div className={styles.metaItem}>
-          <strong>Prep Time</strong>
+          <strong>Előkészítési idő</strong>
           <span>{prepTime}</span>
         </div>
         <div className={styles.metaItem}>
-          <strong>Cook Time</strong>
+          <strong>Főzési idő</strong>
           <span>{cookTime}</span>
         </div>
         <div className={styles.metaItem}>
-          <strong>Servings</strong>
-          <span>{servings} ppl</span>
+          <strong>Adagok</strong>
+          <span>{servings} fő</span>
         </div>
         <div className={styles.metaItem}>
-          <strong>Difficulty</strong>
+          <strong>Nehézség</strong>
           <span>{difficulty}</span>
         </div>
       </div>
-      <button className='cta'>Add to MealPlan</button>
+      <button className='cta'>Hozzáadás</button>
     </header>
   );
 }

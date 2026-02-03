@@ -31,9 +31,9 @@ const BasicInfoSection = ({
   onImageChange,
 }: BasicInfoSectionProps) => {
   return (
-    <Box title='Basic Information'>
+    <Box title='Alapvető információk'>
       <div className={styles.field}>
-        <label htmlFor='title'>Title *</label>
+        <label htmlFor='title'>Cím *</label>
         <input
           type='text'
           id='title'
@@ -44,7 +44,7 @@ const BasicInfoSection = ({
       </div>
 
       <div className={styles.field}>
-        <label htmlFor='imageFile'>Recipe Image *</label>
+        <label htmlFor='imageFile'>Recept képe *</label>
         <input
           type='file'
           id='imageFile'
@@ -54,32 +54,32 @@ const BasicInfoSection = ({
         />
         {imagePreview && (
           <div className={styles.imagePreview}>
-            <img src={imagePreview} alt='Recipe preview' />
+            <img src={imagePreview} alt='Recept előnézete' />
           </div>
         )}
       </div>
 
       <div className={styles.fieldGroup}>
         <div className={styles.field}>
-          <label htmlFor='prepTime'>Prep Time *</label>
+          <label htmlFor='prepTime'>Előkészítési idő *</label>
           <input
             type='text'
             id='prepTime'
             value={prepTime}
             onChange={(e) => onPrepTimeChange(e.target.value)}
-            placeholder='20 minutes'
+            placeholder='20 perc'
             required
           />
         </div>
 
         <div className={styles.field}>
-          <label htmlFor='cookTime'>Cook Time *</label>
+          <label htmlFor='cookTime'>Főzési idő *</label>
           <input
             type='text'
             id='cookTime'
             value={cookTime}
             onChange={(e) => onCookTimeChange(e.target.value)}
-            placeholder='6-8 hours'
+            placeholder='6-8 óra'
             required
           />
         </div>
@@ -87,7 +87,7 @@ const BasicInfoSection = ({
 
       <div className={styles.fieldGroup}>
         <div className={styles.field}>
-          <label htmlFor='servings'>Servings *</label>
+          <label htmlFor='servings'>Adagok *</label>
           <input
             type='number'
             id='servings'
@@ -99,16 +99,16 @@ const BasicInfoSection = ({
         </div>
 
         <div className={styles.field}>
-          <label htmlFor='difficulty'>Difficulty *</label>
+          <label htmlFor='difficulty'>Nehézség *</label>
           <select
             id='difficulty'
             value={difficulty}
             onChange={(e) => onDifficultyChange(e.target.value)}
             required
           >
-            <option value='Easy'>Easy</option>
-            <option value='Medium'>Medium</option>
-            <option value='Hard'>Hard</option>
+            <option value='Easy'>Könnyű</option>
+            <option value='Medium'>Közepes</option>
+            <option value='Hard'>Nehéz</option>
           </select>
         </div>
       </div>
