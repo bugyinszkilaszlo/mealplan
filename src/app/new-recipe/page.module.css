@@ -1,0 +1,184 @@
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.container h1 {
+  margin-bottom: 2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.section {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.field label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.field input,
+.field select,
+.field textarea {
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.imagePreview {
+  margin-top: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 400px;
+}
+
+.imagePreview img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.fieldGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.arrayItem {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border: 1px solid #e0e0e0;
+}
+
+.ingredientFields {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.ingredientFields input {
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.instructionFields,
+.tipFields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.instructionFields input,
+.instructionFields textarea,
+.tipFields input,
+.tipFields textarea {
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.addButton {
+  background: #f0f0f0;
+  color: #333;
+  border: 2px dashed #ccc;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.addButton:hover {
+  background: #e8e8e8;
+  border-color: #999;
+}
+
+.removeButton {
+  background: #ff4444;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.removeButton:hover {
+  background: #cc0000;
+}
+
+.submitButton {
+  background: var(--accent-color);
+  color: #222;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.125rem;
+  font-weight: 700;
+  transition: all 0.2s;
+  margin-top: 1rem;
+}
+
+.submitButton:hover {
+  background: #d4ff66;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(192, 255, 58, 0.3);
+}
+
+@media (max-width: 768px) {
+  .fieldGroup {
+    grid-template-columns: 1fr;
+  }
+
+  .ingredientFields {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 1.5rem;
+  }
+}

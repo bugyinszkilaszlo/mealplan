@@ -1,0 +1,15 @@
+.box {
+  margin: 2rem 0;
+}
+
+.title {
+  margin: 0 0 -15px 20px;
+  font-size: 2rem;
+}
+
+.content {
+  padding: 20px;
+  background-color: #fafafa;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}

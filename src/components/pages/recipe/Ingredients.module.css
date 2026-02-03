@@ -1,0 +1,15 @@
+@media (min-width: 1024px) {
+  .ingredients {
+    margin: 0;
+    grid-area: ingredients;
+  }
+}
+
+.ingredients ul {
+  margin-bottom: 8px;
+}
+
+.ingredients ul li {
+  margin: 16px 0 0 20px;
+  list-style-type: disc;
+}
