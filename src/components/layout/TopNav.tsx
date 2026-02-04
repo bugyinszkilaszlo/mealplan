@@ -74,7 +74,6 @@ export default function TopNav() {
             <Link
               href='/logout'
               onClick={logoutUser}
-              className={isActive('/recipes') ? styles.active : ''}
             >
               Kijelentkezés
             </Link>
