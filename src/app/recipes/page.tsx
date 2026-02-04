@@ -18,7 +18,6 @@ export default function RecipesPage() {
   };
 
   const filteredData = recipesData.filter((meal) => {
-    // If no filters are active, show all meals
     if (
       activeFilters.mealTimes.length === 0 &&
       activeFilters.courses.length === 0 &&
@@ -27,22 +26,18 @@ export default function RecipesPage() {
       return true;
     }
 
-    // Check if meal matches mealTime filter (if any selected)
     const matchesMealTime =
       activeFilters.mealTimes.length === 0 ||
       activeFilters.mealTimes.some((time) => meal.mealTimes.includes(time));
 
-    // Check if meal matches course filter (if any selected)
     const matchesCourse =
       activeFilters.courses.length === 0 ||
       activeFilters.courses.some((course) => meal.courses.includes(course));
 
-    // Check if meal matches tags filter (if any selected)
     const matchesTags =
       activeFilters.tags.length === 0 ||
       activeFilters.tags.some((tag) => meal.tags.includes(tag));
 
-    // Return true only if all active filter categories match
     return matchesMealTime && matchesCourse && matchesTags;
   });
 
