@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 
-export default function RegisterPage() {
+export default function RegistrationPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [msg, setMsg] = useState<string | null>(null)
@@ -12,7 +12,7 @@ export default function RegisterPage() {
     setLoading(true)
     setMsg(null)
     try {
-      const res = await fetch('/api/register', {
+      const res = await fetch('/api/registration', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -34,7 +34,7 @@ export default function RegisterPage() {
 
   return (
     <div style={{ maxWidth: 480, margin: '2rem auto', padding: '1rem' }}>
-      <h1>Register</h1>
+      <h1>Registration</h1>
       <form onSubmit={handleSubmit}>
         <label style={{ display: 'block', marginBottom: 8 }}>
           Email

@@ -10,7 +10,7 @@ export function proxy(req: NextRequest) {
     pathname.startsWith('/api') ||
     pathname.startsWith('/static') ||
     pathname === '/login' ||
-    pathname === '/register' ||
+    pathname === '/registration' ||
     pathname.startsWith('/public')
   ) {
     return NextResponse.next()
