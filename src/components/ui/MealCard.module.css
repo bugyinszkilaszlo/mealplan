@@ -45,8 +45,8 @@
   padding: 12px;
   font-size: 0.9rem;
   border-radius: 18px 0 18px 0;
+  background-color: color-mix(in srgb, var(--accent-color) 80%, transparent);
   backdrop-filter: blur(3px);
-  opacity: 0.9;
 }
 
 .article button:hover {
