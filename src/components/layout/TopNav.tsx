@@ -1,13 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import styles from './TopNav.module.css';
 
 export default function TopNav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -15,6 +16,22 @@ export default function TopNav() {
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
+  };
+
+  const logoutUser = async () => {
+    try {
+      const res = await fetch('/api/logout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      });
+
+      if (res.ok) {
+        router.push('/');
+      }
+    }
+    catch(err) {
+      console.log(err)
+    }
   };
 
   const isActive = (path: string) => pathname === path;
@@ -51,6 +68,15 @@ export default function TopNav() {
               className={isActive('/recipes') ? styles.active : ''}
             >
               Receptek
+            </Link>
+          </li>
+          <li>
+            <Link
+              href='/logout'
+              onClick={logoutUser}
+              className={isActive('/recipes') ? styles.active : ''}
+            >
+              Kijelentkezés
             </Link>
           </li>
         </ul>
