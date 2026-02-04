@@ -9,39 +9,60 @@ export default function BottomFooter() {
       <div className={styles.footerContainer}>
         <div className={styles.footerTagline}>
           <h3>MealPlan</h3>
-          <p>Plan your meals, organize your recipes, and simplify your cooking journey.</p>
+          <p>
+            Tervezd meg az étkezéseidet, rendszerezd a receptjeidet, és
+            egyszerűsítsd a főzési utadat.
+          </p>
         </div>
         <div className={styles.footerContent}>
           <div className={styles.footerSection}>
-            <h4>Quick Links</h4>
+            <h4>Gyors linkek</h4>
             <ul>
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/recipes">Recipes</Link></li>
-              <li><Link href="/planner">Planner</Link></li>
+              <li>
+                <Link href='/'>Kezdőlap</Link>
+              </li>
+              <li>
+                <Link href='/recipes'>Receptek</Link>
+              </li>
+              <li>
+                <Link href='/planner'>Tervező</Link>
+              </li>
             </ul>
           </div>
 
           <div className={styles.footerSection}>
-            <h4>Resources</h4>
+            <h4>Információk</h4>
             <ul>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">Privacy Policy</a></li>
+              <li>
+                <a href='#'>Rólunk</a>
+              </li>
+              <li>
+                <a href='#'>Kapcsolat</a>
+              </li>
+              <li>
+                <a href='#'>Adatvédelmi irányelvek</a>
+              </li>
             </ul>
           </div>
 
           <div className={styles.footerSection}>
-            <h4>Connect</h4>
+            <h4>Kapcsolat</h4>
             <ul>
-              <li><a href="#">Instagram</a></li>
-              <li><a href="#">Pinterest</a></li>
-              <li><a href="#">Newsletter</a></li>
+              <li>
+                <a href='#'>Instagram</a>
+              </li>
+              <li>
+                <a href='#'>Pinterest</a>
+              </li>
+              <li>
+                <a href='#'>Hírlevél</a>
+              </li>
             </ul>
           </div>
         </div>
 
         <div className={styles.footerBottom}>
-          <p>&copy; {currentYear} MealPlan. Made with ❤️ and good food.</p>
+          <p>&copy; {currentYear} MealPlan. Készült ❤️-tel és jó étellel.</p>
         </div>
       </div>
     </footer>

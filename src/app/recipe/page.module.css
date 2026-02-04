@@ -1,12 +1,32 @@
+.cta {
+  display: block;
+  width: 100%;
+}
+
+@media (min-width: 576px) {
+  .cta {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+
 @media (min-width: 1024px) {
   .sections {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-areas:
-      "ingredients instructions"
-      "tips instructions";
+      'ingredients instructions'
+      'tips instructions';
     gap: 32px;
     margin: 32px 0;
+  }
+
+  .instructionsWrapper {
+    grid-area: instructions;
+  }
+
+  .cta {
+    margin: 32px 0 0 0;
   }
 }
 

@@ -22,12 +22,14 @@ export default function TopNav() {
   return (
     <nav className={styles.nav}>
       <div className={styles.navContainer}>
-        <Link href="/" className={styles.logo}>MealPlan</Link>
+        <Link href='/' className={styles.logo}>
+          MealPlan
+        </Link>
 
         <button
           className={styles.hamburger}
           onClick={toggleMobileMenu}
-          aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-label={mobileMenuOpen ? 'Menü bezárása' : 'Menü megnyitása'}
         >
           <span>{mobileMenuOpen ? '✕' : '☰'}</span>
         </button>
@@ -35,29 +37,20 @@ export default function TopNav() {
         <ul className={mobileMenuOpen ? styles.mobileOpen : ''}>
           <li>
             <Link
-              href="/"
+              href='/'
               onClick={closeMobileMenu}
               className={isActive('/') ? styles.active : ''}
             >
-              Home
+              Kezdőlap
             </Link>
           </li>
           <li>
             <Link
-              href="/recipes"
+              href='/recipes'
               onClick={closeMobileMenu}
               className={isActive('/recipes') ? styles.active : ''}
             >
-              Recipes
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/planner"
-              onClick={closeMobileMenu}
-              className={isActive('/planner') ? styles.active : ''}
-            >
-              Planner
+              Receptek
             </Link>
           </li>
         </ul>

@@ -1,0 +1,23 @@
+@media (min-width: 1024px) {
+  .tips {
+    margin: 0;
+    grid-area: tips;
+  }
+}
+
+.tips ul li {
+  margin: 24px 0 0 20px;
+  list-style-type: decimal;
+  font-weight: 600;
+}
+
+.tips ul li h3 {
+  margin: 0 0 8px 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+}
+
+.tips ul li p {
+  margin: 0 0 12px 0;
+  font-weight: 400;
+}
