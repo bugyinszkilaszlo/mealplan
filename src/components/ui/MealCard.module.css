@@ -50,5 +50,9 @@
 }
 
 .article button:hover {
-  opacity: 1;
+  background-color: color-mix(
+    in srgb,
+    var(--accent-color-hover) 80%,
+    transparent
+  );
 }

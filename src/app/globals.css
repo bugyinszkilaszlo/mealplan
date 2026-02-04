@@ -72,4 +72,5 @@ button {
   font-size: 1rem;
   font-weight: bold;
   border-radius: 18px;
+  transition: all 0.3s ease;
 }
