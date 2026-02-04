@@ -1,0 +1,48 @@
+.sectionTitle {
+  margin: 0 0 6px 0;
+  font-family: var(--font-nunito-sans);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.optionsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filterOption {
+  padding: 0.4rem 0.8rem;
+  background-color: #f8f8f8;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #666;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.filterOption:hover {
+  background-color: #f0f0f0;
+  border-color: #d0d0d0;
+  color: #444;
+}
+
+.filterOption.active {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #222;
+}
+
+.filterOption.active:hover {
+  background-color: var(--accent-color-hover);
+  border-color: var(--accent-color-hover);
+}
+
+@media (min-width: 768px) {
+  .filterOption {
+    padding: 0.5rem 1rem;
+  }
+}
