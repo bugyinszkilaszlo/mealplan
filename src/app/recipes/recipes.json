@@ -1,0 +1,189 @@
+[
+  {
+    "id": 1,
+    "title": "Spaghetti Carbonara",
+    "description": "Klasszikus olasz tészta tojással, sajttal és pancettával.",
+    "image": "/meals/01.jpg",
+    "thumbnail": "/meals/01-thumb.jpg",
+    "url": "/recipe",
+    "mealTimes": ["ebed", "vacsora"],
+    "courses": ["foetel"],
+    "tags": ["egyszeru", "gyors"]
+  },
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "description": "Omlós csirke krémes, fűszeres paradicsomszószban aromás fűszernövényekkel.",
+    "image": "/meals/02.jpg",
+    "thumbnail": "/meals/02-thumb.jpg",
+    "url": "/recipe",
+    "mealTimes": ["ebed", "vacsora"],
+    "courses": ["foetel"],
+    "tags": ["csirke", "high-protein"]
+  },
+  {
+    "id": 3,
+    "title": "Vegetable Stir Fry",
+    "description": "Friss zöldségek sós szószban gyömbérrel és fokhagymával.",
+    "image": "/meals/03.jpg",
+    "thumbnail": "/meals/03-thumb.jpg",
+    "url": "/recipe",
+    "mealTimes": ["ebed", "vacsora"],
+    "courses": ["foetel"],
+    "tags": ["vegan", "gyors", "egyszeru", "olcso"]
+  },
+  {
+    "id": 4,
+    "title": "Beef Tacos",
+    "description": "Fűszerezett darált marhahús ropogós héjban salátával és sajttal.",
+    "image": "/meals/04.jpg",
+    "thumbnail": "/meals/04-thumb.jpg",
+    "url": "/recipe",
+    "mealTimes": ["ebed", "vacsora"],
+    "courses": ["foetel"],
+    "tags": ["marha", "gyors", "high-protein"]
+  },
+  {
+    "id": 5,
+    "title": "Caesar Salad",
+    "description": "Ropogós római saláta parmezánnal, pirított kenyérkockával és krémes öntettel.",
+    "image": "/meals/05.jpg",
+    "thumbnail": "/meals/05-thumb.jpg",
+    "url": "/recipe",
+    "mealTimes": ["ebed", "vacsora", "uzsonna"],
+    "courses": ["salata", "eloetel"],
+    "tags": ["gyors", "egyszeru"]
+  },
+  {
+    "id": 6,
+    "title": "Grilled Salmon",
+    "description": "Friss atlanti lazac citromos vajjal és sült zöldségekkel.",
+    "image": "/meals/06.jpg",
+    "thumbnail": "/meals/06-thumb.jpg",
+    "url": "/recipe",
+    "mealTimes": ["ebed", "vacsora"],
+    "courses": ["foetel"],
+    "tags": ["hal", "high-protein", "frissensult"]
+  },
+  {
+    "id": 7,
+    "title": "Mushroom Risotto",
+    "description": "Krémes olasz rizs vad gombákkal és parmezánnal.",
+    "image": "/meals/07.jpg",
+    "thumbnail": "/meals/07-thumb.jpg",
+    "url": "/recipe",
+    "mealTimes": ["ebed", "vacsora"],
+    "courses": ["foetel"],
+    "tags": ["egyszeru"]
+  },
+  {
+    "id": 8,
+    "title": "BBQ Pulled Pork",
+    "description": "Lassan sült sertéslapocka füstös BBQ szószban pirított zsemlében.",
+    "image": "/meals/08.jpg",
+    "thumbnail": "/meals/08-thumb.jpg",
+    "url": "/recipe",
+    "mealTimes": ["ebed", "vacsora"],
+    "courses": ["foetel", "szendvics"],
+    "tags": ["sertes", "high-protein"]
+  },
+  {
+    "id": 9,
+    "title": "Palacsinta",
+    "description": "Édes palacsinta nutellával és gyümölcsökkel.",
+    "image": "/meals/09.jpg",
+    "thumbnail": "/meals/09-thumb.jpg",
+    "url": "/recipe",
+    "mealTimes": ["reggeli", "uzsonna"],
+    "courses": ["desszert"],
+    "tags": ["egyszeru", "gyors", "olcso"]
+  },
+  {
+    "id": 10,
+    "title": "Gulyásleves",
+    "description": "Hagyományos magyar gulyásleves marhahússal és zöldségekkel.",
+    "image": "/meals/10.jpg",
+    "thumbnail": "/meals/10-thumb.jpg",
+    "url": "/recipe",
+    "mealTimes": ["ebed"],
+    "courses": ["leves", "foetel"],
+    "tags": ["marha", "egytaletel"]
+  },
+  {
+    "id": 11,
+    "title": "Sonkás-sajtos Szendvics",
+    "description": "Ropogós pirítós sonkával, sajttal és friss zöldségekkel.",
+    "image": "/meals/11.jpg",
+    "thumbnail": "/meals/11-thumb.jpg",
+    "url": "/recipe",
+    "mealTimes": ["reggeli", "tizorai", "uzsonna"],
+    "courses": ["szendvics"],
+    "tags": ["gyors", "egyszeru"]
+  },
+  {
+    "id": 12,
+    "title": "Zöldborsófőzelék",
+    "description": "Krémes zöldborsófőzelék rántással és virsli körettel.",
+    "image": "/meals/12.jpg",
+    "thumbnail": "/meals/12-thumb.jpg",
+    "url": "/recipe",
+    "mealTimes": ["ebed"],
+    "courses": ["foetel"],
+    "tags": ["fozolek", "egytaletel", "olcso"]
+  },
+  {
+    "id": 13,
+    "title": "Paradicsomleves",
+    "description": "Klasszikus paradicsomleves tésztával és tejföllel.",
+    "image": "/meals/13.jpg",
+    "thumbnail": "/meals/13-thumb.jpg",
+    "url": "/recipe",
+    "mealTimes": ["ebed"],
+    "courses": ["leves"],
+    "tags": ["vegan", "egyszeru", "olcso"]
+  },
+  {
+    "id": 14,
+    "title": "Tiramisu",
+    "description": "Olasz kávés desszert mascarpone krémmel és kakaóporral.",
+    "image": "/meals/14.jpg",
+    "thumbnail": "/meals/14-thumb.jpg",
+    "url": "/recipe",
+    "mealTimes": ["uzsonna", "vacsora"],
+    "courses": ["desszert"],
+    "tags": ["egyszeru"]
+  },
+  {
+    "id": 15,
+    "title": "Rántott Csirkemell",
+    "description": "Omlós rántott csirkemell burgonyapürével és uborkasalátával.",
+    "image": "/meals/15.jpg",
+    "thumbnail": "/meals/15-thumb.jpg",
+    "url": "/recipe",
+    "mealTimes": ["ebed", "vacsora"],
+    "courses": ["foetel"],
+    "tags": ["csirke", "high-protein", "frissensult"]
+  },
+  {
+    "id": 16,
+    "title": "Bruschetta",
+    "description": "Olasz pirítós friss paradicsommal, bazsalikommal és fokhagymával.",
+    "image": "/meals/16.jpg",
+    "thumbnail": "/meals/16-thumb.jpg",
+    "url": "/recipe",
+    "mealTimes": ["tizorai", "uzsonna"],
+    "courses": ["eloetel"],
+    "tags": ["vegan", "gyors", "egyszeru", "olcso"]
+  },
+  {
+    "id": 17,
+    "title": "Sertéspörkölt",
+    "description": "Hagyományos magyar pörkölt sertéshúsból, nokedlivel.",
+    "image": "/meals/17.jpg",
+    "thumbnail": "/meals/17-thumb.jpg",
+    "url": "/recipe",
+    "mealTimes": ["ebed", "vacsora"],
+    "courses": ["foetel"],
+    "tags": ["sertes", "egytaletel", "high-protein"]
+  }
+]

@@ -1,0 +1,48 @@
+.filterBox {
+  margin-top: -36px;
+}
+
+.filterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.resultCount {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.clearButton {
+  padding: 0.4rem 0.8rem;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clearButton:hover {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.filterSections {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .clearButton {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+}

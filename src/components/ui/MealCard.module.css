@@ -4,7 +4,7 @@
   overflow: hidden;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .article:hover {
@@ -32,9 +32,8 @@
 .article h2 span {
   display: inline-block;
   padding: 12px;
-  background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(3px);
   border-top-left-radius: 18px;
   border-bottom-right-radius: 18px;
 }
@@ -44,8 +43,10 @@
   bottom: 4px;
   right: 4px;
   padding: 12px;
+  font-size: 0.9rem;
   border-radius: 18px 0 18px 0;
-  opacity: .9;
+  backdrop-filter: blur(3px);
+  opacity: 0.9;
 }
 
 .article button:hover {
