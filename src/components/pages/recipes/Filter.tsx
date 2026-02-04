@@ -57,19 +57,12 @@ export default function Filter({ onFilterChange, filteredCount }: FilterProps) {
   return (
     <Box title='Szűrők' className={styles.filterBox}>
       {hasActiveFilters && (
-        <div className={styles.filterHeader}>
-          <span className={styles.resultCount}>{filteredCount} találat</span>
-          <button
-            type='button'
-            className={styles.clearButton}
-            onClick={clearAllFilters}
-          >
-            Összes törlése
-          </button>
-        </div>
+        <span className={styles.resultCount}>{filteredCount} találat</span>
       )}
 
-      <div className={styles.filterSections}>
+      <div
+        className={`${styles.filterSections} ${hasActiveFilters && styles.hasActiveFilters}`}
+      >
         <MealTimeFilter
           selected={filters.mealTimes}
           onChange={handleMealTimeChange}
@@ -80,6 +73,16 @@ export default function Filter({ onFilterChange, filteredCount }: FilterProps) {
         />
         <TagsFilter selected={filters.tags} onChange={handleTagsChange} />
       </div>
+
+      {hasActiveFilters && (
+        <button
+          type='button'
+          className={styles.clearButton}
+          onClick={clearAllFilters}
+        >
+          Összes törlése
+        </button>
+      )}
     </Box>
   );
 }
