@@ -1,92 +1,70 @@
-import MealCard from '@/components/ui/MealCard';
-import styles from './page.module.css';
+'use client';
 
-const demoData = [
-  {
-    id: 1,
-    title: 'Spaghetti Carbonara',
-    description: 'Klasszikus olasz tészta tojással, sajttal és pancettával.',
-    image: '/meals/01.jpg',
-    thumbnail: '/meals/01-thumb.jpg',
-    url: '/recipe',
-  },
-  {
-    id: 2,
-    title: 'Chicken Tikka Masala',
-    description:
-      'Omlós csirke krémes, fűszeres paradicsomszószban aromás fűszernövényekkel.',
-    image: '/meals/02.jpg',
-    thumbnail: '/meals/02-thumb.jpg',
-    url: '/recipe',
-  },
-  {
-    id: 3,
-    title: 'Vegetable Stir Fry',
-    description: 'Friss zöldségek sós szószban gyömbérrel és fokhagymával.',
-    image: '/meals/03.jpg',
-    thumbnail: '/meals/03-thumb.jpg',
-    url: '/recipe',
-  },
-  {
-    id: 4,
-    title: 'Beef Tacos',
-    description:
-      'Fűszerezett darált marhahús ropogós héjban salátával és sajttal.',
-    image: '/meals/04.jpg',
-    thumbnail: '/meals/04-thumb.jpg',
-    url: '/recipe',
-  },
-  {
-    id: 5,
-    title: 'Caesar Salad',
-    description:
-      'Ropogós római saláta parmezánnal, pirított kenyérkockával és krémes öntettel.',
-    image: '/meals/05.jpg',
-    thumbnail: '/meals/05-thumb.jpg',
-    url: '/recipe',
-  },
-  {
-    id: 6,
-    title: 'Grilled Salmon',
-    description: 'Friss atlanti lazac citromos vajjal és sült zöldségekkel.',
-    image: '/meals/06.jpg',
-    thumbnail: '/meals/06-thumb.jpg',
-    url: '/recipe',
-  },
-  {
-    id: 7,
-    title: 'Mushroom Risotto',
-    description: 'Krémes olasz rizs vad gombákkal és parmezánnal.',
-    image: '/meals/07.jpg',
-    thumbnail: '/meals/07-thumb.jpg',
-    url: '/recipe',
-  },
-  {
-    id: 8,
-    title: 'BBQ Pulled Pork',
-    description:
-      'Lassan sült sertéslapocka füstös BBQ szószban pirított zsemlében.',
-    image: '/meals/08.jpg',
-    thumbnail: '/meals/08-thumb.jpg',
-    url: '/recipe',
-  },
-];
+import { useState } from 'react';
+import MealCard from '@/components/ui/MealCard';
+import Filter, { type FilterState } from '@/components/pages/recipes/Filter';
+import styles from './page.module.css';
+import recipesData from './recipes.json';
 
 export default function RecipesPage() {
+  const [activeFilters, setActiveFilters] = useState<FilterState>({
+    mealTimes: [],
+    courses: [],
+    tags: [],
+  });
+
+  const handleFilterChange = (filters: FilterState) => {
+    setActiveFilters(filters);
+  };
+
+  const filteredData = recipesData.filter((meal) => {
+    if (
+      activeFilters.mealTimes.length === 0 &&
+      activeFilters.courses.length === 0 &&
+      activeFilters.tags.length === 0
+    ) {
+      return true;
+    }
+
+    const matchesMealTime =
+      activeFilters.mealTimes.length === 0 ||
+      activeFilters.mealTimes.some((time) => meal.mealTimes.includes(time));
+
+    const matchesCourse =
+      activeFilters.courses.length === 0 ||
+      activeFilters.courses.some((course) => meal.courses.includes(course));
+
+    const matchesTags =
+      activeFilters.tags.length === 0 ||
+      activeFilters.tags.some((tag) => meal.tags.includes(tag));
+
+    return matchesMealTime && matchesCourse && matchesTags;
+  });
+
   return (
     <>
-      <h1>Receptek</h1>
-      <ul className={styles.grid}>
-        {demoData.map((meal) => (
-          <li key={meal.id}>
-            <MealCard
-              url={meal.url}
-              thumbnail={meal.thumbnail}
-              title={meal.title}
-            />
-          </li>
-        ))}
-      </ul>
+      <h1 className={styles.title}>Receptek</h1>
+      <div className={styles.pageLayout}>
+        <aside className={styles.sidebar}>
+          <Filter
+            onFilterChange={handleFilterChange}
+            filteredCount={filteredData.length}
+          />
+        </aside>
+        <div className={styles.content}>
+          <ul className={styles.grid}>
+            {filteredData.map((meal) => (
+              <li key={meal.id}>
+                <MealCard
+                  url={meal.url}
+                  thumbnail={meal.thumbnail}
+                  title={meal.title}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </>
   );
 }

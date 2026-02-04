@@ -1,7 +1,12 @@
+.title {
+  margin: 1rem 0 3rem 0;
+}
+
 .grid {
   display: grid;
   gap: 32px;
-  padding: 0 32px;
+  padding: 0;
+  grid-template-columns: 1fr;
 }
 
 @media (min-width: 576px) {
@@ -10,8 +15,23 @@
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .pageLayout {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .sidebar {
+    flex: 0 0 320px;
+  }
+  .content {
+    flex: 1;
   }
 }

@@ -1,0 +1,49 @@
+.filterBox {
+  margin-top: -36px;
+  position: relative;
+}
+
+.resultCount {
+  position: absolute;
+  top: 41px;
+  right: 4px;
+  background-color: #f0f0f0;
+  padding: 6px 18px;
+  border-radius: 0 18px 0 18px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.clearButton {
+  padding: 0.4rem 0.8rem;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  border-radius: 18px 0 18px 0;
+  font-weight: 600;
+  padding: 12px 24px;
+}
+
+.clearButton:hover {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.filterSections {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 6px;
+}
+.hasActiveFilters {
+  padding-bottom: 36px;
+}
