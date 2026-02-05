@@ -9,6 +9,6 @@ export async function POST() {
 
     return res
   } catch (err) {
-    return NextResponse.json({ error: 'Logout failed' }, { status: 500 })
+    return NextResponse.json({ error: 'Sikertelen kijelentkezés!' }, { status: 500 })
   }
 }

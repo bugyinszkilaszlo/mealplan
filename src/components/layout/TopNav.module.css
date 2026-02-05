@@ -122,6 +122,13 @@
     left: 0;
   }
 
+  .navContainer ul.mobileOpen li .logoutButton {
+    position: relative;
+    left: 6px;
+    font-size: 1.5rem;
+    padding: 8px 10px
+  }
+
   .navContainer li a {
     font-size: 1.5rem;
   }
