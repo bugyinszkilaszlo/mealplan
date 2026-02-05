@@ -65,6 +65,9 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  display: flex;
+  align-items: center;     /* függőleges közép */
+  justify-content: center; /* vízszintes közép */
 }
 
 .navContainer a {
@@ -105,7 +108,7 @@
     background-color: rgba(255, 255, 255, 0.98);
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 2rem;
     transition: all 0.3s ease;
     z-index: 1000;
@@ -122,4 +125,15 @@
   .navContainer li a {
     font-size: 1.5rem;
   }
+}
+
+.logoutButton {
+  /* align-self: flex-start; */
+  background: linear-gradient(90deg,var(--accent-color), #a4eb0c);
+  border: none;
+  color: #222222;
+  padding:10px 14px;
+  border-radius:10px;
+  cursor:pointer;
+  box-shadow: 0 6px 20px rgba(255,107,107,0.14);
 }

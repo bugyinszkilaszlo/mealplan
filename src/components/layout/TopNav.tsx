@@ -26,6 +26,7 @@ export default function TopNav() {
       });
 
       if (res.ok) {
+        console.log('is it ok?')
         router.push('/');
       }
     }
@@ -71,12 +72,12 @@ export default function TopNav() {
             </Link>
           </li>
           <li>
-            <Link
-              href='/logout'
+            <button
               onClick={logoutUser}
+              className={styles.logoutButton}
             >
               Kijelentkezés
-            </Link>
+            </button>
           </li>
         </ul>
       </div>
