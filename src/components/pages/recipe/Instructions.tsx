@@ -1,5 +1,5 @@
 import type { Instruction } from '@/types/recipe';
-import Box from '@/components/ui/Box';
+import Box from '@/components/ui/custom/Box';
 import styles from './Instructions.module.css';
 
 interface InstructionsProps {

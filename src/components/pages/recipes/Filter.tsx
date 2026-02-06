@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Box from '@/components/ui/Box';
+import Box from '@/components/ui/custom/Box';
 import styles from './Filter.module.css';
 import MealTimeFilter from './MealTimeFilter';
 import CourseFilter from './CourseFilter';

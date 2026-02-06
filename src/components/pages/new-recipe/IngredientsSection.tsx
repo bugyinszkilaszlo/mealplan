@@ -1,6 +1,6 @@
 import { Ingredient } from '@/types/recipe';
 import styles from '@/app/new-recipe/page.module.css';
-import Box from '@/components/ui/Box';
+import Box from '@/components/ui/custom/Box';
 
 interface IngredientsSectionProps {
   ingredients: Ingredient[];
