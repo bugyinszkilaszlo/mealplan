@@ -12,39 +12,6 @@ This document tracks the migration of custom components to shadcn/ui, kiboui com
 
 ## Form Components (New Recipe Page)
 
-### ✅ Input
-
-Replace all `<input>` elements with shadcn Input component:
-
-- `src/components/pages/new-recipe/BasicInfoSection.tsx` (title, prepTime, cookTime, servings, file input)
-- `src/components/pages/new-recipe/IngredientsSection.tsx` (name, amount, unit)
-
-### ✅ Label
-
-Replace all `<label>` elements with shadcn Label component:
-
-- `src/components/pages/new-recipe/BasicInfoSection.tsx`
-- `src/components/pages/new-recipe/IngredientsSection.tsx`
-
-### ✅ Select
-
-Replace difficulty dropdown:
-
-- `src/components/pages/new-recipe/BasicInfoSection.tsx` (difficulty select)
-
-### ✅ Textarea
-
-Add for longer text inputs:
-
-- `src/components/pages/new-recipe/InstructionsSection.tsx` (description field)
-- `src/components/pages/new-recipe/TipsSection.tsx` (description field)
-
-### ⬜ Form
-
-Wrap entire new recipe form with shadcn Form component:
-
-- `src/app/new-recipe/page.tsx`
-
 ---
 
 ## Button Components
@@ -131,3 +98,52 @@ Replace or enhance existing components:
 - Keep existing CSS modules until fully migrated
 - Update TypeScript types as needed
 - Consider creating wrapper components for app-specific styling
+
+---
+
+---
+
+---
+
+# ✅ COMPLETED MIGRATIONS
+
+---
+
+---
+
+---
+
+## Form Components (New Recipe Page)
+
+### ✅ Form
+
+Wrap entire new recipe form with shadcn Form component:
+
+- `src/app/new-recipe/page.tsx`
+
+### ✅ Input
+
+Replace all `<input>` elements with shadcn Input component:
+
+- `src/components/pages/new-recipe/BasicInfoSection.tsx` (title, prepTime, cookTime, servings, file input)
+- `src/components/pages/new-recipe/IngredientsSection.tsx` (name, amount, unit)
+
+### ✅ Label
+
+Replace all `<label>` elements with shadcn Label component:
+
+- `src/components/pages/new-recipe/BasicInfoSection.tsx`
+- `src/components/pages/new-recipe/IngredientsSection.tsx`
+
+### ✅ Select
+
+Replace difficulty dropdown:
+
+- `src/components/pages/new-recipe/BasicInfoSection.tsx` (difficulty select)
+
+### ✅ Textarea
+
+Add for longer text inputs:
+
+- `src/components/pages/new-recipe/InstructionsSection.tsx` (description field)
+- `src/components/pages/new-recipe/TipsSection.tsx` (description field)
