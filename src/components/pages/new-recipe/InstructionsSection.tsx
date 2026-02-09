@@ -1,6 +1,8 @@
 import { Instruction } from '@/types/recipe';
 import styles from '@/app/new-recipe/page.module.css';
 import Box from '@/components/ui/custom/Box';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 interface InstructionsSectionProps {
   instructions: Instruction[];
@@ -20,14 +22,14 @@ const InstructionsSection = ({
       {instructions.map((instruction, index) => (
         <div key={index} className={styles.arrayItem}>
           <div className={styles.instructionFields}>
-            <input
+            <Input
               type='text'
               value={instruction.title}
               onChange={(e) => onUpdate(index, 'title', e.target.value)}
               placeholder='Lépés címe'
               required
             />
-            <textarea
+            <Textarea
               value={instruction.description}
               onChange={(e) => onUpdate(index, 'description', e.target.value)}
               placeholder='Lépés leírása'

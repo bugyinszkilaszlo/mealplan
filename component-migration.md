@@ -1,6 +1,6 @@
-# Component Migration to shadcn/ui
+# Component Migration to shadcn/ui, kiboui
 
-This document tracks the migration of custom components to shadcn/ui components.
+This document tracks the migration of custom components to shadcn/ui, kiboui components.
 
 ## Status Legend
 
@@ -12,27 +12,27 @@ This document tracks the migration of custom components to shadcn/ui components.
 
 ## Form Components (New Recipe Page)
 
-### ⬜ Input
+### ✅ Input
 
 Replace all `<input>` elements with shadcn Input component:
 
 - `src/components/pages/new-recipe/BasicInfoSection.tsx` (title, prepTime, cookTime, servings, file input)
 - `src/components/pages/new-recipe/IngredientsSection.tsx` (name, amount, unit)
 
-### ⬜ Label
+### ✅ Label
 
 Replace all `<label>` elements with shadcn Label component:
 
 - `src/components/pages/new-recipe/BasicInfoSection.tsx`
 - `src/components/pages/new-recipe/IngredientsSection.tsx`
 
-### ⬜ Select
+### ✅ Select
 
 Replace difficulty dropdown:
 
 - `src/components/pages/new-recipe/BasicInfoSection.tsx` (difficulty select)
 
-### ⬜ Textarea
+### ✅ Textarea
 
 Add for longer text inputs:
 

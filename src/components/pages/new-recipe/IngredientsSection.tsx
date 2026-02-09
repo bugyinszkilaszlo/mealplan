@@ -1,6 +1,7 @@
 import { Ingredient } from '@/types/recipe';
 import styles from '@/app/new-recipe/page.module.css';
 import Box from '@/components/ui/custom/Box';
+import { Input } from '@/components/ui/input';
 
 interface IngredientsSectionProps {
   ingredients: Ingredient[];
@@ -24,14 +25,14 @@ const IngredientsSection = ({
       {ingredients.map((ingredient, index) => (
         <div key={index} className={styles.arrayItem}>
           <div className={styles.ingredientFields}>
-            <input
+            <Input
               type='text'
               value={ingredient.name}
               onChange={(e) => onUpdate(index, 'name', e.target.value)}
               placeholder='Hozzávaló neve'
               required
             />
-            <input
+            <Input
               type='number'
               value={ingredient.amount || ''}
               onChange={(e) =>
@@ -41,7 +42,7 @@ const IngredientsSection = ({
               step='0.01'
               required
             />
-            <input
+            <Input
               type='text'
               value={ingredient.unit}
               onChange={(e) => onUpdate(index, 'unit', e.target.value)}
