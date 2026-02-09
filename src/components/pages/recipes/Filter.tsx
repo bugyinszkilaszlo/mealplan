@@ -6,6 +6,7 @@ import styles from './Filter.module.css';
 import MealTimeFilter from './MealTimeFilter';
 import CourseFilter from './CourseFilter';
 import TagsFilter from './TagsFilter';
+import { Button } from '@/components/ui/button';
 
 export interface FilterState {
   mealTimes: string[];
@@ -75,13 +76,14 @@ export default function Filter({ onFilterChange, filteredCount }: FilterProps) {
       </div>
 
       {hasActiveFilters && (
-        <button
+        <Button
           type='button'
+          variant='outline'
           className={styles.clearButton}
           onClick={clearAllFilters}
         >
           Összes törlése
-        </button>
+        </Button>
       )}
     </Box>
   );

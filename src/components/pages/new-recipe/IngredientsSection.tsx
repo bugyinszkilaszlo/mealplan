@@ -2,6 +2,7 @@ import { Ingredient } from '@/types/recipe';
 import styles from '@/app/new-recipe/page.module.css';
 import Box from '@/components/ui/custom/Box';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 interface IngredientsSectionProps {
   ingredients: Ingredient[];
@@ -50,20 +51,27 @@ const IngredientsSection = ({
             />
           </div>
           {ingredients.length > 1 && (
-            <button
+            <Button
               type='button'
               onClick={() => onRemove(index)}
+              variant='destructive'
+              size='sm'
               className={styles.removeButton}
             >
               Eltávolítás
-            </button>
+            </Button>
           )}
         </div>
       ))}
 
-      <button type='button' onClick={onAdd} className={styles.addButton}>
+      <Button
+        type='button'
+        onClick={onAdd}
+        variant='outline'
+        className={styles.addButton}
+      >
         + Hozzávaló hozzáadása
-      </button>
+      </Button>
     </Box>
   );
 };

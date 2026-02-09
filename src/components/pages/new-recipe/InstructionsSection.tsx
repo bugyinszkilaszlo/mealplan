@@ -3,6 +3,7 @@ import styles from '@/app/new-recipe/page.module.css';
 import Box from '@/components/ui/custom/Box';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Button } from '@/components/ui/button';
 
 interface InstructionsSectionProps {
   instructions: Instruction[];
@@ -38,20 +39,27 @@ const InstructionsSection = ({
             />
           </div>
           {instructions.length > 1 && (
-            <button
+            <Button
               type='button'
               onClick={() => onRemove(index)}
+              variant='destructive'
+              size='sm'
               className={styles.removeButton}
             >
               Eltávolítás
-            </button>
+            </Button>
           )}
         </div>
       ))}
 
-      <button type='button' onClick={onAdd} className={styles.addButton}>
+      <Button
+        type='button'
+        onClick={onAdd}
+        variant='outline'
+        className={styles.addButton}
+      >
         + Lépés hozzáadása
-      </button>
+      </Button>
     </Box>
   );
 };

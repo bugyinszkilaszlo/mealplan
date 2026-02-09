@@ -10,6 +10,7 @@ import IngredientsSection from '@/components/pages/new-recipe/IngredientsSection
 import InstructionsSection from '@/components/pages/new-recipe/InstructionsSection';
 import TipsSection from '@/components/pages/new-recipe/TipsSection';
 import { Form } from '@/components/ui/form';
+import { Button } from '@/components/ui/button';
 
 const recipeFormSchema = z.object({
   title: z.string().min(1, 'A cím megadása kötelező'),
@@ -204,9 +205,9 @@ const NewRecipe = () => {
             onUpdate={updateTip}
           />
 
-          <button type='submit' className={styles.submitButton}>
+          <Button type='submit' className={styles.submitButton}>
             Recept létrehozása
-          </button>
+          </Button>
         </form>
       </Form>
     </div>

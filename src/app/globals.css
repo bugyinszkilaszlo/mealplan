@@ -99,6 +99,7 @@ button {
 
 .cta {
   background-color: var(--accent-color);
+  color: var(--color-primary-background);
   border: none;
   padding: 16px 24px;
   font-size: 1rem;

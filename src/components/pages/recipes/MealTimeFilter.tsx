@@ -1,6 +1,7 @@
 'use client';
 
 import styles from './FilterSection.module.css';
+import { Button } from '@/components/ui/button';
 
 interface MealTimeFilterProps {
   selected: string[];
@@ -32,16 +33,17 @@ export default function MealTimeFilter({
       <h3 className={styles.sectionTitle}>Étkezés</h3>
       <div className={styles.optionsGrid}>
         {mealTimes.map((mealTime) => (
-          <button
+          <Button
             key={mealTime.id}
             type='button'
+            variant={selected.includes(mealTime.id) ? 'default' : 'outline'}
             className={`${styles.filterOption} ${
               selected.includes(mealTime.id) ? styles.active : ''
             }`}
             onClick={() => handleToggle(mealTime.id)}
           >
             {mealTime.label}
-          </button>
+          </Button>
         ))}
       </div>
     </div>

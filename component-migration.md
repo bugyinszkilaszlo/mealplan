@@ -14,25 +14,6 @@ This document tracks the migration of custom components to shadcn/ui, kiboui com
 
 ---
 
-## Button Components
-
-### ⬜ Button
-
-Replace all plain `<button>` elements:
-
-- `src/components/pages/new-recipe/IngredientsSection.tsx` (Add/Remove buttons)
-- `src/components/pages/new-recipe/InstructionsSection.tsx` (Add/Remove buttons)
-- `src/components/pages/new-recipe/TipsSection.tsx` (Add/Remove buttons)
-- `src/components/pages/recipes/Filter.tsx` ("Összes törlése" button)
-- `src/components/pages/recipes/CourseFilter.tsx` (Filter option buttons)
-- `src/components/pages/recipes/TagsFilter.tsx` (Filter option buttons)
-- `src/components/pages/recipes/MealTimeFilter.tsx` (Filter option buttons)
-- `src/components/layout/TopNav.tsx` (Mobile menu toggle)
-
-**Note:** shadcn Button component already exists at `src/components/ui/button.tsx`
-
----
-
 ## Layout Components
 
 ### ⬜ Sheet
@@ -76,11 +57,6 @@ Could replace the TopNav implementation:
 - `src/components/layout/TopNav.tsx`
 
 ---
-
-## Extend existing button component
-
-- `src/components/ui/custom/MealCard.tsx` ("Hozzáad" button)
-- `src/components/pages/recipe/Header.tsx` ("Hozzáadás" button)
 
 ### ⬜ Card
 
@@ -147,3 +123,21 @@ Add for longer text inputs:
 
 - `src/components/pages/new-recipe/InstructionsSection.tsx` (description field)
 - `src/components/pages/new-recipe/TipsSection.tsx` (description field)
+
+## Button Components
+
+### ✅ Button
+
+Replace all plain `<button>` elements:
+
+- `src/components/pages/new-recipe/IngredientsSection.tsx` (Add/Remove buttons)
+- `src/components/pages/new-recipe/InstructionsSection.tsx` (Add/Remove buttons)
+- `src/components/pages/new-recipe/TipsSection.tsx` (Add/Remove buttons)
+- `src/components/pages/recipes/Filter.tsx` ("Összes törlése" button)
+- `src/components/pages/recipes/CourseFilter.tsx` (Filter option buttons)
+- `src/components/pages/recipes/TagsFilter.tsx` (Filter option buttons)
+- `src/components/pages/recipes/MealTimeFilter.tsx` (Filter option buttons)
+- `src/components/layout/TopNav.tsx` (Mobile menu toggle)
+- `src/app/new-recipe/page.tsx` (Submit button)
+- `src/components/ui/custom/MealCard.tsx` ("Hozzáad" button)
+- `src/components/pages/recipe/Header.tsx` ("Hozzáadás" button)

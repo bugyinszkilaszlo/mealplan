@@ -1,6 +1,7 @@
 'use client';
 
 import styles from './FilterSection.module.css';
+import { Button } from '@/components/ui/button';
 
 interface TagsFilterProps {
   selected: string[];
@@ -36,16 +37,17 @@ export default function TagsFilter({ selected, onChange }: TagsFilterProps) {
       <h3 className={styles.sectionTitle}>Címkék</h3>
       <div className={styles.optionsGrid}>
         {tags.map((tag) => (
-          <button
+          <Button
             key={tag.id}
             type='button'
+            variant={selected.includes(tag.id) ? 'default' : 'outline'}
             className={`${styles.filterOption} ${
               selected.includes(tag.id) ? styles.active : ''
             }`}
             onClick={() => handleToggle(tag.id)}
           >
             {tag.label}
-          </button>
+          </Button>
         ))}
       </div>
     </div>

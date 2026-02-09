@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import styles from './TopNav.module.css';
+import { Button } from '@/components/ui/button';
 
 export default function TopNav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -26,13 +27,14 @@ export default function TopNav() {
           MealPlan
         </Link>
 
-        <button
+        <Button
+          variant='ghost'
           className={styles.hamburger}
           onClick={toggleMobileMenu}
           aria-label={mobileMenuOpen ? 'Menü bezárása' : 'Menü megnyitása'}
         >
           <span>{mobileMenuOpen ? '✕' : '☰'}</span>
-        </button>
+        </Button>
 
         <ul className={mobileMenuOpen ? styles.mobileOpen : ''}>
           <li>
