@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './FilterSection.module.css';
-import { Button } from '@/components/ui/button';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 
 interface CourseFilterProps {
   selected: string[];
@@ -21,32 +21,26 @@ export default function CourseFilter({
   selected,
   onChange,
 }: CourseFilterProps) {
-  const handleToggle = (id: string) => {
-    if (selected.includes(id)) {
-      onChange(selected.filter((item) => item !== id));
-    } else {
-      onChange([...selected, id]);
-    }
-  };
-
   return (
     <div className={styles.filterSection}>
       <h3 className={styles.sectionTitle}>Fogás</h3>
-      <div className={styles.optionsGrid}>
+      <ToggleGroup
+        type='multiple'
+        value={selected}
+        onValueChange={onChange}
+        variant='outline'
+        spacing={2}
+      >
         {courses.map((course) => (
-          <Button
+          <ToggleGroupItem
             key={course.id}
-            type='button'
-            variant={selected.includes(course.id) ? 'default' : 'outline'}
-            className={`${styles.filterOption} ${
-              selected.includes(course.id) ? styles.active : ''
-            }`}
-            onClick={() => handleToggle(course.id)}
+            value={course.id}
+            aria-label={course.label}
           >
             {course.label}
-          </Button>
+          </ToggleGroupItem>
         ))}
-      </div>
+      </ToggleGroup>
     </div>
   );
 }

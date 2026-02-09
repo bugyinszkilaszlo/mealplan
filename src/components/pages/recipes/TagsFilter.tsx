@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './FilterSection.module.css';
-import { Button } from '@/components/ui/button';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 
 interface TagsFilterProps {
   selected: string[];
@@ -24,32 +24,22 @@ const tags = [
 ];
 
 export default function TagsFilter({ selected, onChange }: TagsFilterProps) {
-  const handleToggle = (id: string) => {
-    if (selected.includes(id)) {
-      onChange(selected.filter((item) => item !== id));
-    } else {
-      onChange([...selected, id]);
-    }
-  };
-
   return (
     <div className={styles.filterSection}>
       <h3 className={styles.sectionTitle}>Címkék</h3>
-      <div className={styles.optionsGrid}>
+      <ToggleGroup
+        type='multiple'
+        value={selected}
+        onValueChange={onChange}
+        variant='outline'
+        spacing={2}
+      >
         {tags.map((tag) => (
-          <Button
-            key={tag.id}
-            type='button'
-            variant={selected.includes(tag.id) ? 'default' : 'outline'}
-            className={`${styles.filterOption} ${
-              selected.includes(tag.id) ? styles.active : ''
-            }`}
-            onClick={() => handleToggle(tag.id)}
-          >
+          <ToggleGroupItem key={tag.id} value={tag.id} aria-label={tag.label}>
             {tag.label}
-          </Button>
+          </ToggleGroupItem>
         ))}
-      </div>
+      </ToggleGroup>
     </div>
   );
 }

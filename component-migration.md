@@ -26,14 +26,6 @@ Replace mobile menu implementation:
 
 ## Filter Components
 
-### ⬜ Toggle Group
-
-Replace filter buttons with Toggle Group:
-
-- `src/components/pages/recipes/CourseFilter.tsx` (Előétel, Leves, Főétel, etc.)
-- `src/components/pages/recipes/MealTimeFilter.tsx`
-- `src/components/pages/recipes/TagsFilter.tsx`
-
 ### ⬜ Badge
 
 Display active filters or recipe tags:
@@ -141,3 +133,13 @@ Replace all plain `<button>` elements:
 - `src/app/new-recipe/page.tsx` (Submit button)
 - `src/components/ui/custom/MealCard.tsx` ("Hozzáad" button)
 - `src/components/pages/recipe/Header.tsx` ("Hozzáadás" button)
+
+## Filter Components
+
+### ✅ Toggle Group
+
+Replace filter buttons with Toggle Group:
+
+- `src/components/pages/recipes/CourseFilter.tsx` (Ł¦§¥©¦±¯©®, ¬©«©³, ¥©§©±¯©®, etc.)
+- `src/components/pages/recipes/MealTimeFilter.tsx`
+- `src/components/pages/recipes/TagsFilter.tsx`
