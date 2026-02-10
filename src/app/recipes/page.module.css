@@ -30,6 +30,7 @@
 
   .sidebar {
     flex: 0 0 320px;
+    max-width: 320px;
   }
   .content {
     flex: 1;

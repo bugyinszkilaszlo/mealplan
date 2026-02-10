@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styles from './MealCard.module.css';
+import { Button } from '@/components/ui/button';
 
 interface MealCardProps {
   url: string;
@@ -19,7 +20,7 @@ export default function MealCard({ url, thumbnail, title }: MealCardProps) {
           <span>{title}</span>
         </h2>
       </Link>
-      <button className='cta'>Hozzáad</button>
+      <Button className='cta'>Hozzáad</Button>
     </article>
   );
 }

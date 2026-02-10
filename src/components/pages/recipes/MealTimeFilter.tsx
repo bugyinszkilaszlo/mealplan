@@ -1,6 +1,7 @@
 'use client';
 
 import styles from './FilterSection.module.css';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 
 interface MealTimeFilterProps {
   selected: string[];
@@ -19,31 +20,26 @@ export default function MealTimeFilter({
   selected,
   onChange,
 }: MealTimeFilterProps) {
-  const handleToggle = (id: string) => {
-    if (selected.includes(id)) {
-      onChange(selected.filter((item) => item !== id));
-    } else {
-      onChange([...selected, id]);
-    }
-  };
-
   return (
     <div className={styles.filterSection}>
       <h3 className={styles.sectionTitle}>Étkezés</h3>
-      <div className={styles.optionsGrid}>
+      <ToggleGroup
+        type='multiple'
+        value={selected}
+        onValueChange={onChange}
+        variant='outline'
+        spacing={2}
+      >
         {mealTimes.map((mealTime) => (
-          <button
+          <ToggleGroupItem
             key={mealTime.id}
-            type='button'
-            className={`${styles.filterOption} ${
-              selected.includes(mealTime.id) ? styles.active : ''
-            }`}
-            onClick={() => handleToggle(mealTime.id)}
+            value={mealTime.id}
+            aria-label={mealTime.label}
           >
             {mealTime.label}
-          </button>
+          </ToggleGroupItem>
         ))}
-      </div>
+      </ToggleGroup>
     </div>
   );
 }

@@ -27,34 +27,7 @@
   color: #333;
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1.25rem;
-}
-
-.field label {
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: #333;
-}
-
-.field input,
-.field select,
-.field textarea {
-  padding: 0.75rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 4px;
-  font-size: 1rem;
-  transition: border-color 0.2s;
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus {
-  outline: none;
-  border-color: var(--accent-color);
-}
+/* Removed: shadcn/ui components handle their own styling */
 
 .imagePreview {
   margin-top: 1rem;
@@ -91,12 +64,7 @@
   margin-bottom: 0.75rem;
 }
 
-.ingredientFields input {
-  padding: 0.75rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 4px;
-  font-size: 1rem;
-}
+/* Removed: shadcn/ui components handle their own styling */
 
 .instructionFields,
 .tipFields {
@@ -106,16 +74,7 @@
   margin-bottom: 0.75rem;
 }
 
-.instructionFields input,
-.instructionFields textarea,
-.tipFields input,
-.tipFields textarea {
-  padding: 0.75rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-family: inherit;
-}
+/* Removed: shadcn/ui components handle their own styling */
 
 .addButton {
   background: #f0f0f0;
@@ -154,7 +113,7 @@
   background: var(--accent-color);
   color: #222;
   border: none;
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1.125rem;

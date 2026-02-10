@@ -1,6 +1,9 @@
 import { Tip } from '@/types/recipe';
 import styles from '@/app/new-recipe/page.module.css';
-import Box from '@/components/ui/Box';
+import Box from '@/components/ui/custom/Box';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Button } from '@/components/ui/button';
 
 interface TipsSectionProps {
   tips: Tip[];
@@ -15,13 +18,13 @@ const TipsSection = ({ tips, onAdd, onRemove, onUpdate }: TipsSectionProps) => {
       {tips.map((tip, index) => (
         <div key={index} className={styles.arrayItem}>
           <div className={styles.tipFields}>
-            <input
+            <Input
               type='text'
               value={tip.title}
               onChange={(e) => onUpdate(index, 'title', e.target.value)}
               placeholder='Tipp címe'
             />
-            <textarea
+            <Textarea
               value={tip.description}
               onChange={(e) => onUpdate(index, 'description', e.target.value)}
               placeholder='Tipp leírása'
@@ -29,20 +32,27 @@ const TipsSection = ({ tips, onAdd, onRemove, onUpdate }: TipsSectionProps) => {
             />
           </div>
           {tips.length > 1 && (
-            <button
+            <Button
               type='button'
               onClick={() => onRemove(index)}
+              variant='destructive'
+              size='sm'
               className={styles.removeButton}
             >
               Eltávolítás
-            </button>
+            </Button>
           )}
         </div>
       ))}
 
-      <button type='button' onClick={onAdd} className={styles.addButton}>
+      <Button
+        type='button'
+        onClick={onAdd}
+        variant='outline'
+        className={styles.addButton}
+      >
         + Tipp hozzáadása
-      </button>
+      </Button>
     </Box>
   );
 };

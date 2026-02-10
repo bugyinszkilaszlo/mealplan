@@ -1,62 +1,105 @@
 'use client';
 
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
 import styles from './page.module.css';
-import { Ingredient, Instruction, Tip, RecipeFormState } from '@/types/recipe';
+import { Ingredient, Instruction, Tip } from '@/types/recipe';
 import BasicInfoSection from '@/components/pages/new-recipe/BasicInfoSection';
 import IngredientsSection from '@/components/pages/new-recipe/IngredientsSection';
 import InstructionsSection from '@/components/pages/new-recipe/InstructionsSection';
 import TipsSection from '@/components/pages/new-recipe/TipsSection';
+import { Form } from '@/components/ui/form';
+import { Button } from '@/components/ui/button';
+
+const recipeFormSchema = z.object({
+  title: z.string().min(1, 'A cím megadása kötelező'),
+  imageUrl: z.string(),
+  imageFile: z.instanceof(File).nullable(),
+  imagePreview: z.string(),
+  prepTime: z.string().min(1, 'Az előkészítési idő megadása kötelező'),
+  cookTime: z.string().min(1, 'A főzési idő megadása kötelező'),
+  servings: z.number().min(1, 'Legalább 1 adag szükséges'),
+  difficulty: z.string(),
+  ingredients: z
+    .array(
+      z.object({
+        name: z.string().min(1, 'A hozzávaló neve kötelező'),
+        unit: z.string(),
+        amount: z.number().min(0, 'A mennyiség nem lehet negatív'),
+      }),
+    )
+    .min(1, 'Legalább 1 hozzávaló szükséges'),
+  instructions: z
+    .array(
+      z.object({
+        title: z.string(),
+        description: z.string().min(1, 'A leírás megadása kötelező'),
+      }),
+    )
+    .min(1, 'Legalább 1 lépés szükséges'),
+  tips: z.array(
+    z.object({
+      title: z.string(),
+      description: z.string(),
+    }),
+  ),
+});
+
+type RecipeFormValues = z.infer<typeof recipeFormSchema>;
 
 const NewRecipe = () => {
-  const [formData, setFormData] = useState<RecipeFormState>({
-    title: '',
-    imageUrl: '',
-    imageFile: null,
-    imagePreview: '',
-    prepTime: '',
-    cookTime: '',
-    servings: 1,
-    difficulty: 'Easy',
-    ingredients: [{ name: '', unit: '', amount: 0 }],
-    instructions: [{ title: '', description: '' }],
-    tips: [{ title: '', description: '' }],
+  const form = useForm<RecipeFormValues>({
+    resolver: zodResolver(recipeFormSchema),
+    defaultValues: {
+      title: '',
+      imageUrl: '',
+      imageFile: null,
+      imagePreview: '',
+      prepTime: '',
+      cookTime: '',
+      servings: 1,
+      difficulty: 'Easy',
+      ingredients: [{ name: '', unit: '', amount: 0 }],
+      instructions: [{ title: '', description: '' }],
+      tips: [{ title: '', description: '' }],
+    },
   });
+
+  const formData = form.watch();
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setFormData({
-          ...formData,
-          imageFile: file,
-          imagePreview: reader.result as string,
-          imageUrl: file.name,
-        });
+        form.setValue('imageFile', file);
+        form.setValue('imagePreview', reader.result as string);
+        form.setValue('imageUrl', file.name);
       };
       reader.readAsDataURL(file);
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Recipe data:', formData);
+  const handleSubmit = (data: RecipeFormValues) => {
+    console.log('Recipe data:', data);
     // TODO: Handle form submission (API call, file upload, etc.)
   };
 
   const addIngredient = () => {
-    setFormData({
-      ...formData,
-      ingredients: [...formData.ingredients, { name: '', unit: '', amount: 0 }],
-    });
+    const currentIngredients = form.getValues('ingredients');
+    form.setValue('ingredients', [
+      ...currentIngredients,
+      { name: '', unit: '', amount: 0 },
+    ]);
   };
 
   const removeIngredient = (index: number) => {
-    setFormData({
-      ...formData,
-      ingredients: formData.ingredients.filter((_, i) => i !== index),
-    });
+    const currentIngredients = form.getValues('ingredients');
+    form.setValue(
+      'ingredients',
+      currentIngredients.filter((_, i) => i !== index),
+    );
   };
 
   const updateIngredient = (
@@ -64,23 +107,26 @@ const NewRecipe = () => {
     field: keyof Ingredient,
     value: string | number,
   ) => {
-    const newIngredients = [...formData.ingredients];
+    const currentIngredients = form.getValues('ingredients');
+    const newIngredients = [...currentIngredients];
     newIngredients[index] = { ...newIngredients[index], [field]: value };
-    setFormData({ ...formData, ingredients: newIngredients });
+    form.setValue('ingredients', newIngredients);
   };
 
   const addInstruction = () => {
-    setFormData({
-      ...formData,
-      instructions: [...formData.instructions, { title: '', description: '' }],
-    });
+    const currentInstructions = form.getValues('instructions');
+    form.setValue('instructions', [
+      ...currentInstructions,
+      { title: '', description: '' },
+    ]);
   };
 
   const removeInstruction = (index: number) => {
-    setFormData({
-      ...formData,
-      instructions: formData.instructions.filter((_, i) => i !== index),
-    });
+    const currentInstructions = form.getValues('instructions');
+    form.setValue(
+      'instructions',
+      currentInstructions.filter((_, i) => i !== index),
+    );
   };
 
   const updateInstruction = (
@@ -88,84 +134,82 @@ const NewRecipe = () => {
     field: keyof Instruction,
     value: string,
   ) => {
-    const newInstructions = [...formData.instructions];
+    const currentInstructions = form.getValues('instructions');
+    const newInstructions = [...currentInstructions];
     newInstructions[index] = { ...newInstructions[index], [field]: value };
-    setFormData({ ...formData, instructions: newInstructions });
+    form.setValue('instructions', newInstructions);
   };
 
   const addTip = () => {
-    setFormData({
-      ...formData,
-      tips: [...formData.tips, { title: '', description: '' }],
-    });
+    const currentTips = form.getValues('tips');
+    form.setValue('tips', [...currentTips, { title: '', description: '' }]);
   };
 
   const removeTip = (index: number) => {
-    setFormData({
-      ...formData,
-      tips: formData.tips.filter((_, i) => i !== index),
-    });
+    const currentTips = form.getValues('tips');
+    form.setValue(
+      'tips',
+      currentTips.filter((_, i) => i !== index),
+    );
   };
 
   const updateTip = (index: number, field: keyof Tip, value: string) => {
-    const newTips = [...formData.tips];
+    const currentTips = form.getValues('tips');
+    const newTips = [...currentTips];
     newTips[index] = { ...newTips[index], [field]: value };
-    setFormData({ ...formData, tips: newTips });
+    form.setValue('tips', newTips);
   };
 
   return (
     <div className={styles.container}>
       <h1>Új recept</h1>
 
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <BasicInfoSection
-          title={formData.title}
-          prepTime={formData.prepTime}
-          cookTime={formData.cookTime}
-          servings={formData.servings}
-          difficulty={formData.difficulty}
-          imagePreview={formData.imagePreview}
-          onTitleChange={(value) => setFormData({ ...formData, title: value })}
-          onPrepTimeChange={(value) =>
-            setFormData({ ...formData, prepTime: value })
-          }
-          onCookTimeChange={(value) =>
-            setFormData({ ...formData, cookTime: value })
-          }
-          onServingsChange={(value) =>
-            setFormData({ ...formData, servings: value })
-          }
-          onDifficultyChange={(value) =>
-            setFormData({ ...formData, difficulty: value })
-          }
-          onImageChange={handleImageChange}
-        />
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(handleSubmit)}
+          className={styles.form}
+        >
+          <BasicInfoSection
+            title={formData.title}
+            prepTime={formData.prepTime}
+            cookTime={formData.cookTime}
+            servings={formData.servings}
+            difficulty={formData.difficulty}
+            imagePreview={formData.imagePreview}
+            onTitleChange={(value) => form.setValue('title', value)}
+            onPrepTimeChange={(value) => form.setValue('prepTime', value)}
+            onCookTimeChange={(value) => form.setValue('cookTime', value)}
+            onServingsChange={(value) => form.setValue('servings', value)}
+            onDifficultyChange={(value) => form.setValue('difficulty', value)}
+            onImageChange={handleImageChange}
+          />
 
-        <IngredientsSection
-          ingredients={formData.ingredients}
-          onAdd={addIngredient}
-          onRemove={removeIngredient}
-          onUpdate={updateIngredient}
-        />
+          <IngredientsSection
+            ingredients={formData.ingredients}
+            onAdd={addIngredient}
+            onRemove={removeIngredient}
+            onUpdate={updateIngredient}
+          />
 
-        <InstructionsSection
-          instructions={formData.instructions}
-          onAdd={addInstruction}
-          onRemove={removeInstruction}
-          onUpdate={updateInstruction}
-        />
+          <InstructionsSection
+            instructions={formData.instructions}
+            onAdd={addInstruction}
+            onRemove={removeInstruction}
+            onUpdate={updateInstruction}
+          />
 
-        <TipsSection
-          tips={formData.tips}
-          onAdd={addTip}
-          onRemove={removeTip}
-          onUpdate={updateTip}
-        />
+          <TipsSection
+            tips={formData.tips}
+            onAdd={addTip}
+            onRemove={removeTip}
+            onUpdate={updateTip}
+          />
 
-        <button type='submit' className={styles.submitButton}>
-          Recept létrehozása
-        </button>
-      </form>
+          <Button type='submit' className={styles.submitButton}>
+            Recept létrehozása
+          </Button>
+        </form>
+      </Form>
     </div>
   );
 };

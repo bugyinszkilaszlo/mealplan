@@ -1,5 +1,14 @@
 import styles from '@/app/new-recipe/page.module.css';
-import Box from '@/components/ui/Box';
+import Box from '@/components/ui/custom/Box';
+import { Input } from '@/components/ui/input';
+import { Field } from '@/components/ui/custom/Field';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 interface BasicInfoSectionProps {
   title: string;
@@ -32,20 +41,18 @@ const BasicInfoSection = ({
 }: BasicInfoSectionProps) => {
   return (
     <Box title='Alapvető információk'>
-      <div className={styles.field}>
-        <label htmlFor='title'>Cím *</label>
-        <input
+      <Field label='Cím' htmlFor='title' required>
+        <Input
           type='text'
           id='title'
           value={title}
           onChange={(e) => onTitleChange(e.target.value)}
           required
         />
-      </div>
+      </Field>
 
-      <div className={styles.field}>
-        <label htmlFor='imageFile'>Recept képe *</label>
-        <input
+      <Field label='Recept képe' htmlFor='imageFile' required>
+        <Input
           type='file'
           id='imageFile'
           accept='image/*'
@@ -57,12 +64,11 @@ const BasicInfoSection = ({
             <img src={imagePreview} alt='Recept előnézete' />
           </div>
         )}
-      </div>
+      </Field>
 
       <div className={styles.fieldGroup}>
-        <div className={styles.field}>
-          <label htmlFor='prepTime'>Előkészítési idő *</label>
-          <input
+        <Field label='Előkészítési idő' htmlFor='prepTime' required>
+          <Input
             type='text'
             id='prepTime'
             value={prepTime}
@@ -70,11 +76,10 @@ const BasicInfoSection = ({
             placeholder='20 perc'
             required
           />
-        </div>
+        </Field>
 
-        <div className={styles.field}>
-          <label htmlFor='cookTime'>Főzési idő *</label>
-          <input
+        <Field label='Főzési idő' htmlFor='cookTime' required>
+          <Input
             type='text'
             id='cookTime'
             value={cookTime}
@@ -82,13 +87,12 @@ const BasicInfoSection = ({
             placeholder='6-8 óra'
             required
           />
-        </div>
+        </Field>
       </div>
 
       <div className={styles.fieldGroup}>
-        <div className={styles.field}>
-          <label htmlFor='servings'>Adagok *</label>
-          <input
+        <Field label='Adagok' htmlFor='servings' required>
+          <Input
             type='number'
             id='servings'
             value={servings}
@@ -96,21 +100,20 @@ const BasicInfoSection = ({
             min='1'
             required
           />
-        </div>
+        </Field>
 
-        <div className={styles.field}>
-          <label htmlFor='difficulty'>Nehézség *</label>
-          <select
-            id='difficulty'
-            value={difficulty}
-            onChange={(e) => onDifficultyChange(e.target.value)}
-            required
-          >
-            <option value='Easy'>Könnyű</option>
-            <option value='Medium'>Közepes</option>
-            <option value='Hard'>Nehéz</option>
-          </select>
-        </div>
+        <Field label='Nehézség' htmlFor='difficulty' required>
+          <Select value={difficulty} onValueChange={onDifficultyChange}>
+            <SelectTrigger id='difficulty' className='w-full'>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent position='popper' sideOffset={4}>
+              <SelectItem value='Easy'>Könnyű</SelectItem>
+              <SelectItem value='Medium'>Közepes</SelectItem>
+              <SelectItem value='Hard'>Nehéz</SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
       </div>
     </Box>
   );

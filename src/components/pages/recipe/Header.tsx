@@ -1,4 +1,5 @@
 import styles from './Header.module.css';
+import { Button } from '@/components/ui/button';
 
 interface HeaderProps {
   title: string;
@@ -43,7 +44,7 @@ export default function Header({
           <span>{difficulty}</span>
         </div>
       </div>
-      <button className='cta'>Hozzáadás</button>
+      <Button className='cta'>Hozzáadás</Button>
     </header>
   );
 }
