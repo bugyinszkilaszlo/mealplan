@@ -31,6 +31,7 @@ export default function TopNav() {
   const navItems = [
     { href: '/', label: 'Kezdőlap' },
     { href: '/recipes', label: 'Receptek' },
+    { href: '/calendar-test', label: 'Calendar Test' },
   ];
 
   return (
