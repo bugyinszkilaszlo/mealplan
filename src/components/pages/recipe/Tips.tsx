@@ -1,5 +1,5 @@
 import type { Tip } from '@/types/recipe';
-import Box from '@/components/ui/Box';
+import Box from '@/components/ui/custom/Box';
 import styles from './Tips.module.css';
 
 interface TipsProps {

@@ -1,5 +1,5 @@
 import type { Ingredient } from '@/types/recipe';
-import Box from '@/components/ui/Box';
+import Box from '@/components/ui/custom/Box';
 import styles from './Ingredients.module.css';
 
 interface IngredientsProps {

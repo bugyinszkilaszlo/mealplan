@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import MealCard from '@/components/ui/MealCard';
+import MealCard from '@/components/ui/custom/MealCard';
 import Filter, { type FilterState } from '@/components/pages/recipes/Filter';
 import styles from './page.module.css';
 import recipesData from './recipes.json';
