@@ -1,13 +1,13 @@
+import { auth } from '@/lib/auth'
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-export function proxy(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl
 
-  // Allow static files, _next, api routes, and auth pages
   if (
     pathname.startsWith('/_next') ||
-    pathname.startsWith('/api') ||
+    pathname.startsWith('/api/auth') ||
     pathname.startsWith('/static') ||
     pathname === '/login' ||
     pathname === '/registration' ||
@@ -16,8 +16,8 @@ export function proxy(req: NextRequest) {
     return NextResponse.next()
   }
 
-  const token = req.cookies.get('token')
-  if (!token) {
+  const session = await auth.api.getSession({ headers: req.headers })
+  if (!session) {
     const url = req.nextUrl.clone()
     url.pathname = '/login'
     return NextResponse.redirect(url)
@@ -27,5 +27,5 @@ export function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/', '/planner/:path*', '/recipes/:path*', '/recipe/:path*']
+  matcher: ['/', '/planner/:path*', '/recipes/:path*', '/recipe/:path*'],
 }

@@ -29,18 +29,18 @@ export default function TopNav() {
 
   const logoutUser = async () => {
     try {
-      const res = await fetch('/api/logout', {
+      const res = await fetch('/api/auth/sign-out', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({}),
       });
 
       if (res.ok) {
-        console.log('is it ok?')
         router.push('/');
+        router.refresh();
       }
-    }
-    catch(err) {
-      console.log(err)
+    } catch (err) {
+      console.log(err);
     }
   };
 

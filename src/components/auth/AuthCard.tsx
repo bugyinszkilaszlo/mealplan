@@ -19,11 +19,18 @@ export default function AuthCard({ mode = 'login' }: { mode?: Mode }) {
     e.preventDefault();
     setLoading(true);
     setError(null);
+
+    console.log(mode)
     try {
-      const endpoint = mode === 'login' ? '/api/login' : '/api/registration';
+      const endpoint =
+        mode === 'login'
+          ? '/api/auth/sign-in/email'
+          : '/api/auth/sign-up/email';
+
       const body: any = { email, password };
       if (mode === 'register') body.name = name;
 
+      console.log('Submitting to:', endpoint, 'with body:', body);
       const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -33,12 +40,14 @@ export default function AuthCard({ mode = 'login' }: { mode?: Mode }) {
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
         setError(data?.message || data?.error || 'Hiba történt');
+        console.log('Auth error:', data.message || data.error || res.statusText);
         setLoading(false);
         return;
       }
 
       if (mode === 'login') router.push('/');
       else router.push('/login');
+
     } catch (err) {
       setError('Hálózati hiba');
       setLoading(false);
