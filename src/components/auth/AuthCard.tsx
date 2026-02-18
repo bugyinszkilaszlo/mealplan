@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { authClient } from "@/lib/auth-client"
 import Link from 'next/link';
 import styles from './AuthCard.module.css';
 
@@ -16,43 +17,36 @@ export default function AuthCard({ mode = 'login' }: { mode?: Mode }) {
   const [error, setError] = useState<string | null>(null);
 
   const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
+    e.preventDefault()
+    setLoading(true)
+    setError(null)
 
-    console.log(mode)
     try {
-      const endpoint =
-        mode === 'login'
-          ? '/api/auth/sign-in/email'
-          : '/api/auth/sign-up/email';
-
-      const body: any = { email, password };
-      if (mode === 'register') body.name = name;
-
-      console.log('Submitting to:', endpoint, 'with body:', body);
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      });
-
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        setError(data?.message || data?.error || 'Hiba történt');
-        console.log('Auth error:', data.message || data.error || res.statusText);
-        setLoading(false);
-        return;
+      if (mode === "login") {
+        const result = await authClient.signIn.email({ email, password });
+        if (result.error) {
+          setError(result.error.message || "Hiba történt");
+          setLoading(false);
+          return;
+        }
+        router.push("/");
+        router.refresh();
+      } else {
+        const result = await authClient.signUp.email({ name, email, password });
+        if (result.error) {
+          setError(result.error.message || "Hiba történt");
+          setLoading(false);
+          return;
+        }
+        router.push("/login");
       }
-
-      if (mode === 'login') router.push('/');
-      else router.push('/login');
-
     } catch (err) {
-      setError('Hálózati hiba');
+      setError("Hálózati hiba");
       setLoading(false);
+    } finally {
+      setLoading(false)
     }
-  };
+  }
 
   return (
     <div className={styles.wrap}>

@@ -21,26 +21,20 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
+import { authClient } from "@/lib/auth-client";
 
-export default function TopNav() {
+export default function TopNav({ loggedIn }: { loggedIn?: boolean }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
 
   const logoutUser = async () => {
     try {
-      const res = await fetch('/api/auth/sign-out', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({}),
-      });
-
-      if (res.ok) {
-        router.push('/');
-        router.refresh();
-      }
+      await authClient.signOut();
+      router.push('/');
+      router.refresh();
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -57,83 +51,86 @@ export default function TopNav() {
         <Link href='/' className={styles.logo}>
           MealPlan
         </Link>
+        {loggedIn && (
+          <>
+            <div className={styles.desktopNav}>
+              <NavigationMenu>
+                <NavigationMenuList>
+                  {navItems.map((item) => (
+                    <NavigationMenuItem key={item.href}>
+                      <NavigationMenuLink
+                        className={cn(
+                          navigationMenuTriggerStyle(),
+                          isActive(item.href) && styles.active,
+                        )}
+                        asChild
+                      >
+                        <Link href={item.href} passHref>
+                          {item.label}
+                        </Link>
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+                  ))}              
+                    <NavigationMenuItem>
+                      <NavigationMenuLink
+                        className={cn(
+                          navigationMenuTriggerStyle(),
+                          styles.logoutButton
+                        )}
+                        asChild
+                      >
+                        <button onClick={logoutUser}>Kijelentkezés</button>
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
+            </div>
 
-        <div className={styles.desktopNav}>
-          <NavigationMenu>
-            <NavigationMenuList>
-              {navItems.map((item) => (
-                <NavigationMenuItem key={item.href}>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      isActive(item.href) && styles.active,
-                    )}
-                    asChild
-                  >
-                    <Link href={item.href} passHref>
-                      {item.label}
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))}
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  className={cn(
-                    navigationMenuTriggerStyle(),
-                    styles.logoutButton
-                  )}
-                  asChild
+            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button
+                  variant='ghost'
+                  size='icon'
+                  className={styles.hamburger}
+                  aria-label='Menü megnyitása'
                 >
-                  <button onClick={logoutUser}>Kijelentkezés</button>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-        </div>
-
-        <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-          <SheetTrigger asChild>
-            <Button
-              variant='ghost'
-              size='icon'
-              className={styles.hamburger}
-              aria-label='Menü megnyitása'
-            >
-              <Menu className='h-6 w-6' />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side='right' className={styles.sheetContent}>
-            <SheetHeader>
-              <SheetTitle>Menü</SheetTitle>
-            </SheetHeader>
-            <nav className={styles.mobileNavLinks}>
-              <ul>
-                {navItems.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={cn(
-                        styles.mobileNavLink,
-                        isActive(item.href) && styles.active,
-                      )}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-                <li>
-                  <button
-                    onClick={logoutUser}
-                    className={styles.mobileNavLink}
-                  >
-                    Kijelentkezés
-                  </button>
-                </li>
-              </ul>
-            </nav>
-          </SheetContent>
-        </Sheet>
+                  <Menu className='h-6 w-6' />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side='right' className={styles.sheetContent}>
+                <SheetHeader>
+                  <SheetTitle>Menü</SheetTitle>
+                </SheetHeader>
+                <nav className={styles.mobileNavLinks}>
+                  <ul>
+                    {navItems.map((item) => (
+                      <li key={item.href}>
+                        <Link
+                          href={item.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={cn(
+                            styles.mobileNavLink,
+                            isActive(item.href) && styles.active,
+                          )}
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                    <li>
+                      <button
+                        onClick={logoutUser}
+                        className={styles.mobileNavLink}
+                      >
+                        Kijelentkezés
+                      </button>
+                    </li>
+                  </ul>
+                </nav>
+              </SheetContent>
+            </Sheet>
+          </>
+        )}
       </div>
     </nav>
   );
