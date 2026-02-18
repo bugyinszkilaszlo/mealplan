@@ -76,6 +76,17 @@ export default function TopNav() {
                   </NavigationMenuLink>
                 </NavigationMenuItem>
               ))}
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    styles.logoutButton
+                  )}
+                  asChild
+                >
+                  <button onClick={logoutUser}>Kijelentkezés</button>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
@@ -114,7 +125,7 @@ export default function TopNav() {
                 <li>
                   <button
                     onClick={logoutUser}
-                    className={styles.logoutButton}
+                    className={styles.mobileNavLink}
                   >
                     Kijelentkezés
                   </button>
