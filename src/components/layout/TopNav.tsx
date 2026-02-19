@@ -51,86 +51,98 @@ export default function TopNav({ loggedIn }: { loggedIn?: boolean }) {
         <Link href='/' className={styles.logo}>
           MealPlan
         </Link>
-        {loggedIn && (
-          <>
-            <div className={styles.desktopNav}>
-              <NavigationMenu>
-                <NavigationMenuList>
-                  {navItems.map((item) => (
-                    <NavigationMenuItem key={item.href}>
-                      <NavigationMenuLink
-                        className={cn(
-                          navigationMenuTriggerStyle(),
-                          isActive(item.href) && styles.active,
-                        )}
-                        asChild
-                      >
-                        <Link href={item.href} passHref>
-                          {item.label}
-                        </Link>
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-                  ))}              
-                    <NavigationMenuItem>
-                      <NavigationMenuLink
-                        className={cn(
-                          navigationMenuTriggerStyle(),
-                          styles.logoutButton
-                        )}
-                        asChild
-                      >
-                        <button onClick={logoutUser}>Kijelentkezés</button>
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-                </NavigationMenuList>
-              </NavigationMenu>
-            </div>
+        <div className={styles.desktopNav}>
+          <NavigationMenu>
+            <NavigationMenuList>
+              {navItems.map((item) => (
+                <NavigationMenuItem key={item.href}>
+                  <NavigationMenuLink
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      isActive(item.href) && styles.active,
+                    )}
+                    asChild
+                  >
+                    <Link href={item.href} passHref>
+                      {item.label}
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+                <NavigationMenuItem>
+                  <NavigationMenuLink
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      isActive("/login") && styles.active,
+                    )}
+                    asChild
+                  >
+                    {loggedIn ? 
+                      <button onClick={logoutUser}>Kijelentkezés</button> : 
+                      <Link href="/login">Bejelentkezés</Link>
+                    }
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
 
-            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button
-                  variant='ghost'
-                  size='icon'
-                  className={styles.hamburger}
-                  aria-label='Menü megnyitása'
-                >
-                  <Menu className='h-6 w-6' />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side='right' className={styles.sheetContent}>
-                <SheetHeader>
-                  <SheetTitle>Menü</SheetTitle>
-                </SheetHeader>
-                <nav className={styles.mobileNavLinks}>
-                  <ul>
-                    {navItems.map((item) => (
-                      <li key={item.href}>
-                        <Link
-                          href={item.href}
-                          onClick={() => setMobileMenuOpen(false)}
-                          className={cn(
-                            styles.mobileNavLink,
-                            isActive(item.href) && styles.active,
-                          )}
-                        >
-                          {item.label}
-                        </Link>
-                      </li>
-                    ))}
-                    <li>
-                      <button
-                        onClick={logoutUser}
-                        className={styles.mobileNavLink}
+        <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+          <SheetTrigger asChild>
+            <Button
+              variant='ghost'
+              size='icon'
+              className={styles.hamburger}
+              aria-label='Menü megnyitása'
+            >
+              <Menu className='h-6 w-6' />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side='right' className={styles.sheetContent}>
+            <SheetHeader>
+              <SheetTitle>Menü</SheetTitle>
+            </SheetHeader>
+            <nav className={styles.mobileNavLinks}>
+              <ul>
+                {navItems.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={cn(
+                        styles.mobileNavLink,
+                        isActive(item.href) && styles.active,
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  {loggedIn ?
+                    <button
+                      onClick={logoutUser}
+                      className={styles.mobileNavLink}
+                    >
+                      Kijelentkezés
+                    </button> 
+                    :
+                    <Link
+                        href="/login"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={cn(
+                          styles.mobileNavLink,
+                          isActive("/login") && styles.active,
+                        )}
                       >
-                        Kijelentkezés
-                      </button>
-                    </li>
-                  </ul>
-                </nav>
-              </SheetContent>
-            </Sheet>
-          </>
-        )}
+                        Bejelentkezés
+                      </Link>
+                  }
+                </li>
+              </ul>
+            </nav>
+          </SheetContent>
+        </Sheet>
       </div>
     </nav>
   );
