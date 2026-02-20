@@ -1,3 +1,5 @@
+import { auth } from '@/lib/auth'
+import { headers } from "next/headers";
 import type { Metadata } from 'next';
 import { Nunito_Sans, Shadows_Into_Light } from 'next/font/google';
 import TopNav from '@/components/layout/TopNav';
@@ -22,18 +24,22 @@ export const metadata: Metadata = {
     'Tervezd meg az étkezéseidet, rendszerezd a receptjeidet, és egyszerűsítsd a főzési utadat.',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth.api.getSession({
+    headers: await headers()
+  })
+
   return (
     <html
       lang='en'
       className={`${nunitoSans.variable} ${shadowsIntoLight.variable}`}
     >
       <body className={nunitoSans.className}>
-        <TopNav />
+        <TopNav loggedIn={!!session} />
         <main>{children}</main>
         <BottomFooter />
       </body>
