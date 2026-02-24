@@ -2,8 +2,12 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { authClient } from "@/lib/auth-client"
+import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
+import Box from '@/components/ui/custom/Box';
+import { Field } from '@/components/ui/custom/Field';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import styles from './AuthCard.module.css';
 
 type Mode = 'login' | 'register';
@@ -17,78 +21,101 @@ export default function AuthCard({ mode = 'login' }: { mode?: Mode }) {
   const [error, setError] = useState<string | null>(null);
 
   const submit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setError(null)
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
 
     try {
-      if (mode === "login") {
+      if (mode === 'login') {
         const result = await authClient.signIn.email({ email, password });
         if (result.error) {
-          setError(result.error.message || "Hiba történt");
+          setError(result.error.message || 'Hiba történt');
           setLoading(false);
           return;
         }
-        router.push("/");
+        router.push('/');
         router.refresh();
       } else {
         const result = await authClient.signUp.email({ name, email, password });
         if (result.error) {
-          setError(result.error.message || "Hiba történt");
+          setError(result.error.message || 'Hiba történt');
           setLoading(false);
           return;
         }
-        router.push("/login");
+        router.push('/login');
       }
     } catch (err) {
-      setError("Hálózati hiba");
+      setError('Hálózati hiba');
       setLoading(false);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className={styles.wrap}>
-      <div className={styles.card}>
-        <h1 className={styles.brand}>MealPlan</h1>
-        <p className={styles.subtitle}>
-          {mode === 'login' ? 'Jelentkezz be fiókodba' : 'Hozd létre új fiókod'}
-        </p>
-
-        <form onSubmit={submit} className={styles.form}>
+      <Box
+        title={mode === 'login' ? 'Bejelentkezés' : 'Regisztráció'}
+        headingLevel='h1'
+        className={styles.authBox}
+      >
+        <form onSubmit={submit}>
           {mode === 'register' && (
-            <label className={styles.field}>
-              <span>Név</span>
-              <input value={name} onChange={(e) => setName(e.target.value)} required placeholder="Pl. Anna Kovács" />
-            </label>
+            <Field label='Név' htmlFor='name' required>
+              <Input
+                type='text'
+                id='name'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </Field>
           )}
 
-          <label className={styles.field}>
-            <span>Email</span>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="email@pelda.com" />
-          </label>
+          <Field label='Email' htmlFor='email' required>
+            <Input
+              type='email'
+              id='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </Field>
 
-          <label className={styles.field}>
-            <span>Jelszó</span>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} placeholder="••••••••" />
-          </label>
+          <Field label='Jelszó' htmlFor='password' required>
+            <Input
+              type='password'
+              id='password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              minLength={6}
+            />
+          </Field>
 
           {error && <div className={styles.error}>{error}</div>}
 
-          <button className={styles.btn} disabled={loading}>
-            {loading ? 'Feldolgozás...' : mode === 'login' ? 'Bejelentkezés' : 'Regisztráció'}
-          </button>
+          <Button type='submit' disabled={loading} className={styles.submitBtn}>
+            {loading
+              ? 'Feldolgozás...'
+              : mode === 'login'
+                ? 'Bejelentkezés'
+                : 'Regisztráció'}
+          </Button>
         </form>
 
         <div className={styles.footer}>
           {mode === 'login' ? (
-            <Link href="/registration" className={styles.link}>Nincs fiókod? Regisztrálj</Link>
+            <Link href='/registration' className={styles.link}>
+              Nincs fiókod? Regisztrálj
+            </Link>
           ) : (
-            <Link href="/login" className={styles.link}>Van már fiókod? Bejelentkezés</Link>
+            <Link href='/login' className={styles.link}>
+              Van már fiókod? Bejelentkezés
+            </Link>
           )}
         </div>
-      </div>
+      </Box>
     </div>
   );
 }
