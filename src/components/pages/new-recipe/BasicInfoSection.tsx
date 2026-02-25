@@ -9,17 +9,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Recipe } from '@/types/recipe';
 
 interface BasicInfoSectionProps {
   title: string;
-  prepTime: string;
-  cookTime: string;
+  prepTimeValue: number;
+  prepTimeUnit: 'perc' | 'óra';
+  cookTimeValue: number;
+  cookTimeUnit: 'perc' | 'óra';
   servings: number;
-  difficulty: string;
+  difficulty: Recipe['difficulty'];
   imagePreview: string;
   onTitleChange: (value: string) => void;
-  onPrepTimeChange: (value: string) => void;
-  onCookTimeChange: (value: string) => void;
+  onPrepTimeValueChange: (value: number) => void;
+  onPrepTimeUnitChange: (value: 'perc' | 'óra') => void;
+  onCookTimeValueChange: (value: number) => void;
+  onCookTimeUnitChange: (value: 'perc' | 'óra') => void;
   onServingsChange: (value: number) => void;
   onDifficultyChange: (value: string) => void;
   onImageChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -27,14 +32,18 @@ interface BasicInfoSectionProps {
 
 const BasicInfoSection = ({
   title,
-  prepTime,
-  cookTime,
+  prepTimeValue,
+  prepTimeUnit,
+  cookTimeValue,
+  cookTimeUnit,
   servings,
   difficulty,
   imagePreview,
   onTitleChange,
-  onPrepTimeChange,
-  onCookTimeChange,
+  onPrepTimeValueChange,
+  onPrepTimeUnitChange,
+  onCookTimeValueChange,
+  onCookTimeUnitChange,
   onServingsChange,
   onDifficultyChange,
   onImageChange,
@@ -68,25 +77,59 @@ const BasicInfoSection = ({
 
       <div className={styles.fieldGroup}>
         <Field label='Előkészítési idő' htmlFor='prepTime' required>
-          <Input
-            type='text'
-            id='prepTime'
-            value={prepTime}
-            onChange={(e) => onPrepTimeChange(e.target.value)}
-            placeholder='20 perc'
-            required
-          />
+          <div className='grid grid-cols-[2fr_1fr] gap-2'>
+            <Input
+              type='number'
+              id='prepTime'
+              value={prepTimeValue}
+              onChange={(e) => onPrepTimeValueChange(Number(e.target.value))}
+              min='1'
+              placeholder='30'
+              required
+            />
+            <Select
+              value={prepTimeUnit}
+              onValueChange={(value: 'perc' | 'óra') =>
+                onPrepTimeUnitChange(value)
+              }
+            >
+              <SelectTrigger id='prepTimeUnit' className='w-full'>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent position='popper' sideOffset={4}>
+                <SelectItem value='perc'>perc</SelectItem>
+                <SelectItem value='óra'>óra</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </Field>
 
         <Field label='Főzési idő' htmlFor='cookTime' required>
-          <Input
-            type='text'
-            id='cookTime'
-            value={cookTime}
-            onChange={(e) => onCookTimeChange(e.target.value)}
-            placeholder='6-8 óra'
-            required
-          />
+          <div className='grid grid-cols-[2fr_1fr] gap-2'>
+            <Input
+              type='number'
+              id='cookTime'
+              value={cookTimeValue}
+              onChange={(e) => onCookTimeValueChange(Number(e.target.value))}
+              min='1'
+              placeholder='1'
+              required
+            />
+            <Select
+              value={cookTimeUnit}
+              onValueChange={(value: 'perc' | 'óra') =>
+                onCookTimeUnitChange(value)
+              }
+            >
+              <SelectTrigger id='cookTimeUnit' className='w-full'>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent position='popper' sideOffset={4}>
+                <SelectItem value='perc'>perc</SelectItem>
+                <SelectItem value='óra'>óra</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </Field>
       </div>
 

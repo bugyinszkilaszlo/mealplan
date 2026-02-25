@@ -17,10 +17,12 @@ const recipeFormSchema = z.object({
   imageUrl: z.string(),
   imageFile: z.instanceof(File).nullable(),
   imagePreview: z.string(),
-  prepTime: z.string().min(1, 'Az előkészítési idő megadása kötelező'),
-  cookTime: z.string().min(1, 'A főzési idő megadása kötelező'),
+  prepTimeValue: z.number().min(1, 'Az előkészítési idő megadása kötelező'),
+  prepTimeUnit: z.enum(['perc', 'óra']),
+  cookTimeValue: z.number().min(1, 'A főzési idő megadása kötelező'),
+  cookTimeUnit: z.enum(['perc', 'óra']),
   servings: z.number().min(1, 'Legalább 1 adag szükséges'),
-  difficulty: z.string(),
+  difficulty: z.enum(['Könnyű', 'Közepes', 'Nehéz']),
   ingredients: z
     .array(
       z.object({
@@ -56,10 +58,12 @@ const NewRecipe = () => {
       imageUrl: '',
       imageFile: null,
       imagePreview: '',
-      prepTime: '',
-      cookTime: '',
+      prepTimeValue: 30,
+      prepTimeUnit: 'perc',
+      cookTimeValue: 1,
+      cookTimeUnit: 'óra',
       servings: 1,
-      difficulty: 'Easy',
+      difficulty: 'Könnyű',
       ingredients: [{ name: '', unit: '', amount: 0 }],
       instructions: [{ title: '', description: '' }],
       tips: [{ title: '', description: '' }],
@@ -82,7 +86,13 @@ const NewRecipe = () => {
   };
 
   const handleSubmit = (data: RecipeFormValues) => {
-    console.log('Recipe data:', data);
+    const recipeData = {
+      ...data,
+      prepTime: `${data.prepTimeValue} ${data.prepTimeUnit}`,
+      cookTime: `${data.cookTimeValue} ${data.cookTimeUnit}`,
+    };
+
+    console.log('Recipe data:', recipeData);
     // TODO: Handle form submission (API call, file upload, etc.)
   };
 
@@ -171,16 +181,33 @@ const NewRecipe = () => {
         >
           <BasicInfoSection
             title={formData.title}
-            prepTime={formData.prepTime}
-            cookTime={formData.cookTime}
+            prepTimeValue={formData.prepTimeValue}
+            prepTimeUnit={formData.prepTimeUnit}
+            cookTimeValue={formData.cookTimeValue}
+            cookTimeUnit={formData.cookTimeUnit}
             servings={formData.servings}
             difficulty={formData.difficulty}
             imagePreview={formData.imagePreview}
             onTitleChange={(value) => form.setValue('title', value)}
-            onPrepTimeChange={(value) => form.setValue('prepTime', value)}
-            onCookTimeChange={(value) => form.setValue('cookTime', value)}
+            onPrepTimeValueChange={(value) =>
+              form.setValue('prepTimeValue', value)
+            }
+            onPrepTimeUnitChange={(value) =>
+              form.setValue('prepTimeUnit', value)
+            }
+            onCookTimeValueChange={(value) =>
+              form.setValue('cookTimeValue', value)
+            }
+            onCookTimeUnitChange={(value) =>
+              form.setValue('cookTimeUnit', value)
+            }
             onServingsChange={(value) => form.setValue('servings', value)}
-            onDifficultyChange={(value) => form.setValue('difficulty', value)}
+            onDifficultyChange={(value) =>
+              form.setValue(
+                'difficulty',
+                value as RecipeFormValues['difficulty'],
+              )
+            }
             onImageChange={handleImageChange}
           />
 
