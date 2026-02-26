@@ -1,9 +1,10 @@
-import { auth } from '@/lib/auth'
-import { headers } from "next/headers";
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 import type { Metadata } from 'next';
 import { Nunito_Sans, Shadows_Into_Light } from 'next/font/google';
 import TopNav from '@/components/layout/TopNav';
 import BottomFooter from '@/components/layout/BottomFooter';
+import AddToPlan from '@/components/layout/AddToPlan';
 import './globals.css';
 
 const nunitoSans = Nunito_Sans({
@@ -30,8 +31,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const session = await auth.api.getSession({
-    headers: await headers()
-  })
+    headers: await headers(),
+  });
 
   return (
     <html
@@ -42,6 +43,7 @@ export default async function RootLayout({
         <TopNav loggedIn={!!session} />
         <main>{children}</main>
         <BottomFooter />
+        <AddToPlan />
       </body>
     </html>
   );
