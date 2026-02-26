@@ -5,6 +5,7 @@ import { Nunito_Sans, Shadows_Into_Light } from 'next/font/google';
 import TopNav from '@/components/layout/TopNav';
 import BottomFooter from '@/components/layout/BottomFooter';
 import AddToPlan from '@/components/layout/AddToPlan';
+import { AddToPlanProvider } from '@/lib/add-to-plan-context';
 import './globals.css';
 
 const nunitoSans = Nunito_Sans({
@@ -40,10 +41,12 @@ export default async function RootLayout({
       className={`${nunitoSans.variable} ${shadowsIntoLight.variable}`}
     >
       <body className={nunitoSans.className}>
-        <TopNav loggedIn={!!session} />
-        <main>{children}</main>
-        <BottomFooter />
-        <AddToPlan />
+        <AddToPlanProvider>
+          <TopNav loggedIn={!!session} />
+          <main>{children}</main>
+          <BottomFooter />
+          <AddToPlan />
+        </AddToPlanProvider>
       </body>
     </html>
   );

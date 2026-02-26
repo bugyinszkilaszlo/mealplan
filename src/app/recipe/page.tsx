@@ -2,6 +2,7 @@ import Header from '@/components/pages/recipe/Header';
 import Ingredients from '@/components/pages/recipe/Ingredients';
 import Instructions from '@/components/pages/recipe/Instructions';
 import Tips from '@/components/pages/recipe/Tips';
+import AddToPlanButton from '@/components/pages/recipe/AddToPlanButton';
 import type { Recipe } from '@/types/recipe';
 import styles from './page.module.css';
 
@@ -118,7 +119,7 @@ export default function RecipePage() {
 
         <div className={styles.instructionsWrapper}>
           <Instructions instructions={recipe.instructions} />
-          <button className={`cta ${styles.cta}`}>Hozzáadás</button>
+          <AddToPlanButton className={`cta ${styles.cta}`} />
         </div>
 
         <Tips tips={recipe.tips} />

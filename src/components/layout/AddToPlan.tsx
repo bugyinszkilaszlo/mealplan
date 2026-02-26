@@ -36,8 +36,10 @@ import {
 import { cn } from '@/lib/utils';
 import recipes from '@/app/recipes/recipes.json';
 import { MEAL_TIMES } from '@/types/recipe';
+import { useAddToPlan } from '@/lib/add-to-plan-context';
 
 export default function AddToPlan() {
+  const { open, setOpen } = useAddToPlan();
   const [recipeOpen, setRecipeOpen] = React.useState(false);
   const [selectedRecipe, setSelectedRecipe] = React.useState<number | null>(
     null,
@@ -50,8 +52,19 @@ export default function AddToPlan() {
     (r) => r.id === selectedRecipe,
   )?.title;
 
+  const handleOpenChange = (next: boolean) => {
+    setOpen(next);
+    if (!next) {
+      setSelectedRecipe(null);
+      setDate(undefined);
+      setMeal('');
+      setRecipeOpen(false);
+      setDateOpen(false);
+    }
+  };
+
   return (
-    <Dialog open>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Hozzáadás a tervhez</DialogTitle>
