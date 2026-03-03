@@ -16,12 +16,18 @@ interface BasicInfoSectionProps {
   cookTime: string;
   servings: number;
   difficulty: string;
+  mealGroup: string;
+  mealType: string;
+  labels?: string;
   imagePreview: string;
   onTitleChange: (value: string) => void;
   onPrepTimeChange: (value: string) => void;
   onCookTimeChange: (value: string) => void;
   onServingsChange: (value: number) => void;
   onDifficultyChange: (value: string) => void;
+  onMealGroupChange: (value: string) => void;
+  onMealTypeChange: (value: string) => void;
+  onLabelsChange: (value: string) => void;
   onImageChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -31,12 +37,18 @@ const BasicInfoSection = ({
   cookTime,
   servings,
   difficulty,
+  mealGroup,
+  mealType,
+  labels = '',
   imagePreview,
   onTitleChange,
   onPrepTimeChange,
   onCookTimeChange,
   onServingsChange,
   onDifficultyChange,
+  onMealGroupChange,
+  onMealTypeChange,
+  onLabelsChange,
   onImageChange,
 }: BasicInfoSectionProps) => {
   return (
@@ -67,25 +79,27 @@ const BasicInfoSection = ({
       </Field>
 
       <div className={styles.fieldGroup}>
-        <Field label='Előkészítési idő' htmlFor='prepTime' required>
+        <Field label='Előkészítési idő (percek)' htmlFor='prepTime' required>
           <Input
-            type='text'
+            type='number'
             id='prepTime'
             value={prepTime}
             onChange={(e) => onPrepTimeChange(e.target.value)}
-            placeholder='20 perc'
+            placeholder='20'
             required
+            min='0'
           />
         </Field>
 
-        <Field label='Főzési idő' htmlFor='cookTime' required>
+        <Field label='Főzési/Sütési idő (percek)' htmlFor='cookTime' required>
           <Input
-            type='text'
+            type='number'
             id='cookTime'
             value={cookTime}
             onChange={(e) => onCookTimeChange(e.target.value)}
-            placeholder='6-8 óra'
+            placeholder='60'
             required
+            min='0'
           />
         </Field>
       </div>
@@ -101,6 +115,20 @@ const BasicInfoSection = ({
             required
           />
         </Field>
+        <Field label='Csoport' htmlFor='mealGroup' required>
+          <Select value={mealGroup} onValueChange={onMealGroupChange}>
+            <SelectTrigger id='mealGroup' className='w-full'>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent position='popper' sideOffset={4}>
+              <SelectItem value='BREAKFAST'>Reggeli</SelectItem>
+              <SelectItem value='BRUNCH'>Brunch</SelectItem>
+              <SelectItem value='LUNCH'>Ebéd</SelectItem>
+              <SelectItem value='SNACK'>Snack</SelectItem>
+              <SelectItem value='DINNER'>Vacsora</SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
 
         <Field label='Nehézség' htmlFor='difficulty' required>
           <Select value={difficulty} onValueChange={onDifficultyChange}>
@@ -108,11 +136,36 @@ const BasicInfoSection = ({
               <SelectValue />
             </SelectTrigger>
             <SelectContent position='popper' sideOffset={4}>
-              <SelectItem value='Easy'>Könnyű</SelectItem>
-              <SelectItem value='Medium'>Közepes</SelectItem>
-              <SelectItem value='Hard'>Nehéz</SelectItem>
+              <SelectItem value='EASY'>Könnyű</SelectItem>
+              <SelectItem value='MEDIUM'>Közepes</SelectItem>
+              <SelectItem value='HARD'>Nehéz</SelectItem>
             </SelectContent>
           </Select>
+        </Field>
+      </div>
+
+      <div className={styles.fieldGroup}>
+        <Field label='Típus' htmlFor='mealType' required>
+          <Select value={mealType} onValueChange={onMealTypeChange}>
+            <SelectTrigger id='mealType' className='w-full'>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent position='popper' sideOffset={4}>
+              <SelectItem value='STARTER'>Előétel</SelectItem>
+              <SelectItem value='MAIN'>Főétel</SelectItem>
+              <SelectItem value='DESSERT'>Desszert</SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
+
+        <Field label='Címkék (vesszõvel elválasztva)' htmlFor='labels'>
+          <Input
+            type='text'
+            id='labels'
+            value={labels}
+            onChange={(e) => onLabelsChange(e.target.value)}
+            placeholder='pl. glutenmentes, gyors, gazdaságos'
+          />
         </Field>
       </div>
     </Box>

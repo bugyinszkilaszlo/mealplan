@@ -11,6 +11,7 @@ const newRecipeSchema = z.object({
   cookTime: z.number().min(0),
   portions: z.number().min(1),
   imageUrl: z.string().optional(),
+  labels: z.array(z.string()).optional(),
   ingredients: z.array(
     z.object({ name: z.string(), amount: z.number(), unit: z.enum(Unit) })
   ).optional(),

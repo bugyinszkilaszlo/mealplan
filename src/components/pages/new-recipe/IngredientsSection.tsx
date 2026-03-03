@@ -3,6 +3,13 @@ import styles from '@/app/new-recipe/page.module.css';
 import Box from '@/components/ui/custom/Box';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 interface IngredientsSectionProps {
   ingredients: Ingredient[];
@@ -43,12 +50,23 @@ const IngredientsSection = ({
               step='0.01'
               required
             />
-            <Input
-              type='text'
-              value={ingredient.unit}
-              onChange={(e) => onUpdate(index, 'unit', e.target.value)}
-              placeholder='Mértékegység (kg, csésze, stb.)'
-            />
+            <div style={{width: '160px'}}>
+              <Select value={ingredient.unit} onValueChange={(v) => onUpdate(index, 'unit', v)}>
+                <SelectTrigger className='w-full'>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent position='popper' sideOffset={4}>
+                  <SelectItem value='G'>g</SelectItem>
+                  <SelectItem value='KG'>kg</SelectItem>
+                  <SelectItem value='L'>l</SelectItem>
+                  <SelectItem value='ML'>ml</SelectItem>
+                  <SelectItem value='PIECE'>db</SelectItem>
+                  <SelectItem value='PINCH'>csipet</SelectItem>
+                  <SelectItem value='TBSP'>ek</SelectItem>
+                  <SelectItem value='TSP'>tk</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
           {ingredients.length > 1 && (
             <Button
