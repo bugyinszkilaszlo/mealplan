@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams  } from 'next/navigation';
 import { authClient } from "@/lib/auth-client"
 import Link from 'next/link';
 import styles from './AuthCard.module.css';
@@ -16,6 +16,10 @@ export default function AuthCard({ mode = 'login' }: { mode?: Mode }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const searchParams = useSearchParams();
+  const rawCallback  = searchParams.get('callbackUrl') || "/";
+  const safeCallback = rawCallback.startsWith("/") ? rawCallback : "/";
+
   const submit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
@@ -24,21 +28,26 @@ export default function AuthCard({ mode = 'login' }: { mode?: Mode }) {
     try {
       if (mode === "login") {
         const result = await authClient.signIn.email({ email, password });
+
         if (result.error) {
           setError(result.error.message || "Hiba történt");
           setLoading(false);
           return;
         }
-        router.push("/");
+
+        router.push(safeCallback);
         router.refresh();
+
       } else {
         const result = await authClient.signUp.email({ name, email, password });
+
         if (result.error) {
           setError(result.error.message || "Hiba történt");
           setLoading(false);
           return;
         }
-        router.push("/login");
+
+        router.push(`/login?callbackUrl=${encodeURIComponent(safeCallback)}`);
       }
     } catch (err) {
       setError("Hálózati hiba");
@@ -83,9 +92,19 @@ export default function AuthCard({ mode = 'login' }: { mode?: Mode }) {
 
         <div className={styles.footer}>
           {mode === 'login' ? (
-            <Link href="/registration" className={styles.link}>Nincs fiókod? Regisztrálj</Link>
+            <Link
+              href={`/registration?callbackUrl=${encodeURIComponent(safeCallback)}`}
+              className={styles.link}
+            >
+              Nincs fiókod? Regisztrálj
+            </Link>
           ) : (
-            <Link href="/login" className={styles.link}>Van már fiókod? Bejelentkezés</Link>
+            <Link
+              href={`/login?callbackUrl=${encodeURIComponent(safeCallback)}`}
+              className={styles.link}
+            >
+              Van már fiókod? Bejelentkezés
+            </Link>
           )}
         </div>
       </div>

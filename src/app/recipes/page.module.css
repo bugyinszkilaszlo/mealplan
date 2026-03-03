@@ -9,6 +9,28 @@
   grid-template-columns: 1fr;
 }
 
+.btn {
+  display: inline-block;
+  text-align: center;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: transform 0.2s;
+  position: relative;
+  width: 100%;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btnPrimary {
+  background-color: var(--accent-color);
+  color: #000;
+  font-weight: 600;
+}
+
 @media (min-width: 576px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);

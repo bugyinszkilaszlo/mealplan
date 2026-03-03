@@ -81,52 +81,9 @@ const NewRecipe = () => {
     }
   };
 
-  const handleSubmit = async (formData: RecipeFormValues) => {
-    const payload = {
-      name: formData.title,              // a formData.title → Recipe.name
-      userId: 'CURRENT_USER_ID',         // ide kell a bejelentkezett user id
-      mealGroup: formData.mealGroup,     // enum érték
-      mealType: formData.mealType,       // enum érték
-      difficulty: formData.difficulty,   // enum érték
-      prepTime: Number(formData.prepTime),
-      cookTime: Number(formData.cookTime),
-      portions: formData.servings,
-      imageUrl: formData.imageUrl,
-      labels: formData.labels || [],     // string[] a connectOrCreate-hoz
-      ingredients: formData.ingredients.map(i => ({
-        name: i.name,
-        amount: i.amount,
-        unit: i.unit,
-      })),
-      instructions: formData.instructions.map(i => ({
-        stepName: i.title,
-        description: i.description,
-      })),
-      tips: formData.tips.map(t => ({
-        name: t.title,
-        description: t.description,
-      })),
-    };
-
-    try {
-      const response = await fetch('/api/recipes', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-
-      if (!response.ok) {
-        const error = await response.text();
-        console.error('Hiba a recept létrehozásakor:', error);
-        return;
-      }
-
-      const createdRecipe = await response.json();
-      console.log('Recept létrehozva:', createdRecipe);
-      // TODO: pl. redirect vagy toast üzenet
-    } catch (err) {
-      console.error('Hálózati hiba:', err);
-    }
+  const handleSubmit = (data: RecipeFormValues) => {
+    console.log('Recipe data:', data);
+    // TODO: Handle form submission (API call, file upload, etc.)
   };
 
   const addIngredient = () => {
