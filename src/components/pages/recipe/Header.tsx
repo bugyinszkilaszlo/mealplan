@@ -1,5 +1,8 @@
+'use client';
+
 import styles from './Header.module.css';
 import { Button } from '@/components/ui/button';
+import { useAddToPlan } from '@/lib/add-to-plan-context';
 
 interface HeaderProps {
   title: string;
@@ -18,6 +21,7 @@ export default function Header({
   servings,
   difficulty,
 }: HeaderProps) {
+  const { setOpen } = useAddToPlan();
   return (
     <header
       className={styles.header}
@@ -44,7 +48,9 @@ export default function Header({
           <span>{difficulty}</span>
         </div>
       </div>
-      <Button className='cta'>Hozzáadás</Button>
+      <Button className='cta' onClick={() => setOpen(true)}>
+        Hozzáadás
+      </Button>
     </header>
   );
 }

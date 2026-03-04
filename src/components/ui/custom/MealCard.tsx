@@ -1,6 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import styles from './MealCard.module.css';
 import { Button } from '@/components/ui/button';
+import { useAddToPlan } from '@/lib/add-to-plan-context';
 
 interface MealCardProps {
   url: string;
@@ -9,6 +12,8 @@ interface MealCardProps {
 }
 
 export default function MealCard({ url, thumbnail, title }: MealCardProps) {
+  const { setOpen } = useAddToPlan();
+
   return (
     <article className={styles.article}>
       <Link
@@ -20,7 +25,9 @@ export default function MealCard({ url, thumbnail, title }: MealCardProps) {
           <span>{title}</span>
         </h2>
       </Link>
-      <Button className='cta'>Hozzáad</Button>
+      <Button className='cta' onClick={() => setOpen(true)}>
+        Hozzáad
+      </Button>
     </article>
   );
 }
