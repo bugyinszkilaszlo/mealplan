@@ -40,10 +40,14 @@ export default function TodaysMenu({ features, mealTimes }: TodaysMenuProps) {
     <section className={styles.section}>
       <div className={styles.groups}>
         {grouped.map(({ mealTime, items }) => (
-          <div key={mealTime.id} className={styles.group}>
+          <div
+            key={mealTime.id}
+            className={styles.group}
+            style={{ borderColor: mealTime.color }}
+          >
             <h3
               className={styles.mealTimeLabel}
-              style={{ borderColor: mealTime.color, color: mealTime.color }}
+              style={{ color: mealTime.color }}
             >
               {mealTime.name}
             </h3>
