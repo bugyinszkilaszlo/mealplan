@@ -1,0 +1,41 @@
+.wrap {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.authBox {
+  width: 100%;
+  max-width: 420px;
+}
+
+.submitBtn {
+  margin-top: 6px;
+  width: 100%;
+}
+
+.footer {
+  margin-top: 14px;
+  text-align: center;
+}
+
+.link {
+  color: rgb(34, 34, 34);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: var(--destructive);
+  background: #f0d0d0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
