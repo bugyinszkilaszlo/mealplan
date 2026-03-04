@@ -9,9 +9,15 @@ interface MealCardProps {
   url: string;
   thumbnail: string;
   title: string;
+  hasAddButton?: boolean;
 }
 
-export default function MealCard({ url, thumbnail, title }: MealCardProps) {
+export default function MealCard({
+  url,
+  thumbnail,
+  title,
+  hasAddButton = true,
+}: MealCardProps) {
   const { setOpen } = useAddToPlan();
 
   return (
@@ -25,9 +31,11 @@ export default function MealCard({ url, thumbnail, title }: MealCardProps) {
           <span>{title}</span>
         </h2>
       </Link>
-      <Button className='cta' onClick={() => setOpen(true)}>
-        Hozzáad
-      </Button>
+      {hasAddButton && (
+        <Button className='cta' onClick={() => setOpen(true)}>
+          Hozzáad
+        </Button>
+      )}
     </article>
   );
 }

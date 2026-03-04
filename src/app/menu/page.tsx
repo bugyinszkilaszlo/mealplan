@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/project-calendar';
 import styles from './page.module.css';
 import sampleRecipesData from './sampleRecipes.json';
+import TodaysMenu from '@/components/pages/menu/TodaysMenu';
 
 const mealTimes: MealTime[] = [
   { id: 'reggeli', name: 'Reggeli', color: '#F59E0B' },
@@ -46,10 +47,14 @@ const latestYear =
     .sort()
     .at(-1) ?? new Date().getFullYear();
 
-export default function CalendarTestPage() {
+export default function MenuPage() {
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Recipe Calendar</h1>
+      <h1 className={styles.title}>Mai menü</h1>
+
+      <TodaysMenu features={sampleRecipes} mealTimes={mealTimes} />
+
+      <h2 className={styles.monthlyMenuTitle}>Havi menü</h2>
 
       <CalendarProvider className={styles.calendarWrapper} startDay={1}>
         <CalendarDate>

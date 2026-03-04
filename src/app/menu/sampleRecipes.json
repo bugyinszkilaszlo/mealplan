@@ -2,189 +2,231 @@
   {
     "id": "1",
     "name": "Omlett",
-    "date": "2026-02-05",
+    "date": "2026-03-05",
     "mealTimeId": "reggeli",
     "url": "/recipe"
   },
   {
     "id": "2",
     "name": "Csirkepaprikás",
-    "date": "2026-02-05",
+    "date": "2026-03-05",
     "mealTimeId": "ebed",
     "url": "/recipe"
   },
   {
     "id": "3",
     "name": "Túrós csusza",
-    "date": "2026-02-05",
+    "date": "2026-03-05",
     "mealTimeId": "vacsora",
     "url": "/recipe"
   },
   {
     "id": "4",
     "name": "Palacsinta",
-    "date": "2026-02-10",
+    "date": "2026-03-10",
     "mealTimeId": "reggeli",
     "url": "/recipe"
   },
   {
     "id": "5",
     "name": "Gyümölcssaláta",
-    "date": "2026-02-10",
+    "date": "2026-03-10",
     "mealTimeId": "tizorai",
     "url": "/recipe"
   },
   {
     "id": "6",
     "name": "Gulyásleves",
-    "date": "2026-02-10",
+    "date": "2026-03-10",
     "mealTimeId": "ebed",
     "url": "/recipe"
   },
   {
     "id": "7",
     "name": "Rántott sajt",
-    "date": "2026-02-10",
+    "date": "2026-03-10",
     "mealTimeId": "vacsora",
     "url": "/recipe"
   },
   {
     "id": "8",
     "name": "Zabkása",
-    "date": "2026-02-12",
+    "date": "2026-03-12",
     "mealTimeId": "reggeli",
     "url": "/recipe"
   },
   {
     "id": "9",
     "name": "Töltött káposzta",
-    "date": "2026-02-12",
+    "date": "2026-03-12",
     "mealTimeId": "ebed",
     "url": "/recipe"
   },
   {
     "id": "10",
     "name": "Tojásos muffin",
-    "date": "2026-02-15",
+    "date": "2026-03-15",
     "mealTimeId": "reggeli",
     "url": "/recipe"
   },
   {
     "id": "11",
     "name": "Lecsó",
-    "date": "2026-02-15",
+    "date": "2026-03-15",
     "mealTimeId": "ebed",
     "url": "/recipe"
   },
   {
     "id": "12",
     "name": "Lazac grillezve",
-    "date": "2026-02-15",
+    "date": "2026-03-15",
     "mealTimeId": "vacsora",
     "url": "/recipe"
   },
   {
     "id": "13",
     "name": "Pörkölt",
-    "date": "2026-02-18",
+    "date": "2026-03-18",
     "mealTimeId": "ebed",
     "url": "/recipe"
   },
   {
     "id": "14",
     "name": "Bundáskenyér",
-    "date": "2026-02-20",
+    "date": "2026-03-20",
     "mealTimeId": "reggeli",
     "url": "/recipe"
   },
   {
     "id": "15",
     "name": "Halászlé",
-    "date": "2026-02-20",
+    "date": "2026-03-20",
     "mealTimeId": "ebed",
     "url": "/recipe"
   },
   {
     "id": "16",
     "name": "Joghurt müzlivel",
-    "date": "2026-02-22",
+    "date": "2026-03-22",
     "mealTimeId": "reggeli",
     "url": "/recipe"
   },
   {
     "id": "17",
     "name": "Rétes",
-    "date": "2026-02-22",
+    "date": "2026-03-22",
     "mealTimeId": "uzsonna",
     "url": "/recipe"
   },
   {
     "id": "18",
     "name": "Pizza",
-    "date": "2026-02-22",
+    "date": "2026-03-22",
     "mealTimeId": "vacsora",
     "url": "/recipe"
   },
   {
     "id": "19",
     "name": "Lángos",
-    "date": "2026-02-25",
+    "date": "2026-03-25",
     "mealTimeId": "ebed",
     "url": "/recipe"
   },
   {
     "id": "20",
     "name": "Somlói galuska",
-    "date": "2026-02-28",
+    "date": "2026-03-28",
     "mealTimeId": "uzsonna",
     "url": "/recipe"
   },
   {
     "id": "21",
     "name": "Tojásrántotta",
-    "date": "2026-02-10",
+    "date": "2026-03-10",
     "mealTimeId": "reggeli",
     "url": "/recipe"
   },
   {
     "id": "22",
     "name": "Főtt tojás",
-    "date": "2026-02-10",
+    "date": "2026-03-10",
     "mealTimeId": "reggeli",
     "url": "/recipe"
   },
   {
     "id": "23",
     "name": "Krumplifőzelék",
-    "date": "2026-02-10",
+    "date": "2026-03-10",
     "mealTimeId": "ebed",
     "url": "/recipe"
   },
   {
     "id": "24",
     "name": "Sült krumpli",
-    "date": "2026-02-15",
+    "date": "2026-03-15",
     "mealTimeId": "ebed",
     "url": "/recipe"
   },
   {
     "id": "25",
     "name": "Saláta",
-    "date": "2026-02-15",
+    "date": "2026-03-15",
     "mealTimeId": "ebed",
     "url": "/recipe"
   },
   {
     "id": "26",
     "name": "Hamburger",
-    "date": "2026-02-22",
+    "date": "2026-03-22",
     "mealTimeId": "vacsora",
     "url": "/recipe"
   },
   {
     "id": "27",
     "name": "Sült csirke",
-    "date": "2026-02-22",
+    "date": "2026-03-22",
+    "mealTimeId": "vacsora",
+    "url": "/recipe"
+  },
+  {
+    "id": "28",
+    "name": "Avokádós pirítós",
+    "date": "2026-03-04",
+    "mealTimeId": "reggeli",
+    "url": "/recipe"
+  },
+  {
+    "id": "29",
+    "name": "Almás joghurt",
+    "date": "2026-03-04",
+    "mealTimeId": "tizorai",
+    "url": "/recipe"
+  },
+  {
+    "id": "30",
+    "name": "Magyaros húsleves",
+    "date": "2026-03-04",
+    "mealTimeId": "ebed",
+    "url": "/recipe"
+  },
+  {
+    "id": "31",
+    "name": "Rakott krumpli",
+    "date": "2026-03-04",
+    "mealTimeId": "ebed",
+    "url": "/recipe"
+  },
+  {
+    "id": "32",
+    "name": "Mákos guba",
+    "date": "2026-03-04",
+    "mealTimeId": "uzsonna",
+    "url": "/recipe"
+  },
+  {
+    "id": "33",
+    "name": "Töltött paprika",
+    "date": "2026-03-04",
     "mealTimeId": "vacsora",
     "url": "/recipe"
   }

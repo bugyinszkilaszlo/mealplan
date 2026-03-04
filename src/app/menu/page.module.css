@@ -14,3 +14,8 @@
   width: 100%;
   overflow: hidden;
 }
+
+.monthlyMenuTitle {
+  font-size: 2rem;
+  text-align: center;
+}

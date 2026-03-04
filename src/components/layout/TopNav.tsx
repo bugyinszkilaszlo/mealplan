@@ -21,7 +21,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
-import { authClient } from "@/lib/auth-client";
+import { authClient } from '@/lib/auth-client';
 
 export default function TopNav({ loggedIn }: { loggedIn?: boolean }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -43,7 +43,7 @@ export default function TopNav({ loggedIn }: { loggedIn?: boolean }) {
   const navItems = [
     { href: '/', label: 'Kezdőlap' },
     { href: '/recipes', label: 'Receptek' },
-    { href: '/calendar-test', label: 'Calendar Test' },
+    { href: '/menu', label: 'Menü' },
   ];
 
   return (
@@ -70,20 +70,21 @@ export default function TopNav({ loggedIn }: { loggedIn?: boolean }) {
                   </NavigationMenuLink>
                 </NavigationMenuItem>
               ))}
-                <NavigationMenuItem>
-                  <NavigationMenuLink
-                    className={cn(
-                      navigationMenuTriggerStyle(),
-                      isActive("/login") && styles.active,
-                    )}
-                    asChild
-                  >
-                    {loggedIn ? 
-                      <button onClick={logoutUser}>Kijelentkezés</button> : 
-                      <Link href="/login">Bejelentkezés</Link>
-                    }
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    isActive('/login') && styles.active,
+                  )}
+                  asChild
+                >
+                  {loggedIn ? (
+                    <button onClick={logoutUser}>Kijelentkezés</button>
+                  ) : (
+                    <Link href='/login'>Bejelentkezés</Link>
+                  )}
+                </NavigationMenuLink>
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
@@ -120,25 +121,25 @@ export default function TopNav({ loggedIn }: { loggedIn?: boolean }) {
                   </li>
                 ))}
                 <li>
-                  {loggedIn ?
+                  {loggedIn ? (
                     <button
                       onClick={logoutUser}
                       className={styles.mobileNavLink}
                     >
                       Kijelentkezés
-                    </button> 
-                    :
+                    </button>
+                  ) : (
                     <Link
-                        href="/login"
-                        onClick={() => setMobileMenuOpen(false)}
-                        className={cn(
-                          styles.mobileNavLink,
-                          isActive("/login") && styles.active,
-                        )}
-                      >
-                        Bejelentkezés
-                      </Link>
-                  }
+                      href='/login'
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={cn(
+                        styles.mobileNavLink,
+                        isActive('/login') && styles.active,
+                      )}
+                    >
+                      Bejelentkezés
+                    </Link>
+                  )}
                 </li>
               </ul>
             </nav>
