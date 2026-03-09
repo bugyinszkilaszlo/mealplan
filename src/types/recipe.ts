@@ -42,3 +42,11 @@ export interface RecipeFormState extends RecipeFormData {
   imageFile: File | null;
   imagePreview: string;
 }
+
+export const MEAL_TIMES = [
+  { value: 'reggeli', label: 'Reggeli' },
+  { value: 'tizorai', label: 'Tízórai' },
+  { value: 'ebed', label: 'Ebéd' },
+  { value: 'uzsonna', label: 'Uzsonna' },
+  { value: 'vacsora', label: 'Vacsora' },
+] as const;

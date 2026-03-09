@@ -1,98 +1,41 @@
-.wrap{
+.wrap {
   min-height: calc(100vh - 64px);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
 }
 
-.card{
-  width:100%;
-  max-width:420px;
-  border-radius:12px;
-  padding:28px;
-  box-shadow: 0 8px 30px rgba(2,6,23,0.6);
-  border: 1px solid rgba(255,255,255,0.04);
-  backdrop-filter: blur(6px);
+.authBox {
+  width: 100%;
+  max-width: 420px;
+}
+
+.submitBtn {
+  margin-top: 6px;
+  width: 100%;
+}
+
+.footer {
+  margin-top: 14px;
+  text-align: center;
+}
+
+.link {
   color: rgb(34, 34, 34);
+  font-size: 13px;
+  text-decoration: none;
 }
 
-.brand{
-  margin:0;
-  font-size:28px;
-  letter-spacing:0.6px;
-  color: rgb(34, 34, 34);
-  font-weight:700;
+.link:hover {
+  text-decoration: underline;
 }
 
-.subtitle{
-  margin:8px 0 18px 0;
-  font-size:14px;
-}
-
-.form{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-.field{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-  font-size:13px;
-  color:var(--muted);
-}
-
-.field input{
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid rgb(175, 175, 175);
-  background: rgba(38, 38, 38, 0.02);
-  color: #222222;
-  outline: none;
-  transition: box-shadow .12s, border-color .12s;
-}
-
-.field input:focus{
-  box-shadow:0 4px 18px rgba(34,197,94,0.06);
-  border-color: rgb(177, 177, 177);
-  background-color: rgb(217, 217, 217);
-}
-
-.btn{
-  margin-top:6px;
-  background: linear-gradient(90deg,var(--accent-color), #a4eb0c);
-  border: none;
-  color: #222222;
-  padding:10px 14px;
-  border-radius:10px;
-  cursor:pointer;
-  font-weight:600;
-  box-shadow: 0 6px 20px rgba(255,107,107,0.14);
-}
-
-.btn[disabled]{
-  opacity:0.7;
-  cursor:not-allowed;
-}
-
-.footer{
-  margin-top:14px;
-  display:flex;
-  justify-content:center;
-}
-
-.link{
-  color: rgb(34, 34, 34);
-  font-size:13px;
-  text-decoration:none;
-}
-
-.error{
-  color:#f44444;
+.error {
+  color: var(--destructive);
   background: #f0d0d0;
-  padding:8px 10px;
-  border-radius:8px;
-  font-size:13px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 8px;
 }
