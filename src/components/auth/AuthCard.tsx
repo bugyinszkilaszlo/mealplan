@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { authClient } from '@/lib/auth-client';
+import { useRouter, useSearchParams  } from 'next/navigation';
+import { authClient } from "@/lib/auth-client"
 import Link from 'next/link';
 import Box from '@/components/ui/custom/Box';
 import { Field } from '@/components/ui/custom/Field';
@@ -20,37 +20,46 @@ export default function AuthCard({ mode = 'login' }: { mode?: Mode }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const searchParams = useSearchParams();
+  const rawCallback  = searchParams.get('callbackUrl') || "/";
+  const safeCallback = rawCallback.startsWith("/") ? rawCallback : "/";
+
   const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
+    e.preventDefault()
+    setLoading(true)
+    setError(null)
 
     try {
-      if (mode === 'login') {
+      if (mode === "login") {
         const result = await authClient.signIn.email({ email, password });
+
         if (result.error) {
-          setError(result.error.message || 'Hiba történt');
+          setError(result.error.message || "Hiba történt");
           setLoading(false);
           return;
         }
-        router.push('/');
+
+        router.push(safeCallback);
         router.refresh();
+
       } else {
         const result = await authClient.signUp.email({ name, email, password });
+
         if (result.error) {
-          setError(result.error.message || 'Hiba történt');
+          setError(result.error.message || "Hiba történt");
           setLoading(false);
           return;
         }
-        router.push('/login');
+
+        router.push(`/login?callbackUrl=${encodeURIComponent(safeCallback)}`);
       }
     } catch (err) {
-      setError('Hálózati hiba');
+      setError("Hálózati hiba");
       setLoading(false);
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   return (
     <div className={styles.wrap}>

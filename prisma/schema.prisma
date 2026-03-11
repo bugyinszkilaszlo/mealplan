@@ -13,6 +13,39 @@ datasource db {
   provider = "postgresql"
 }
 
+//Enums
+enum MealGroup {
+  BREAKFAST
+  BRUNCH
+  LUNCH
+  SNACK
+  DINNER
+}
+
+enum MealType {
+  STARTER
+  MAIN
+  DESSERT
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum Unit {
+  G
+  KG
+  L
+  ML
+  PIECE
+  PINCH
+  TBSP
+  TSP
+}
+
+// Better-Auth Models
 model User {
   id            String    @id
   name          String
@@ -24,6 +57,7 @@ model User {
 
   sessions      Session[]
   accounts      Account[]
+  recipes       Recipe[]
 }
 
 model Session {
@@ -66,4 +100,75 @@ model Verification {
   expiresAt  DateTime
   createdAt  DateTime
   updatedAt  DateTime
+}
+
+//Other Models
+model Recipe {
+  id           String        @id @default(cuid())
+  name         String
+  imageUrl     String?
+  prepTime     Int           
+  cookTime     Int           
+  portions     Int
+  createdAt    DateTime      @default(now())
+
+  mealGroup    MealGroup
+  mealType     MealType
+  difficulty   Difficulty
+
+  userId       String
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  labels       Label[]
+  ingredients  Ingredient[]
+  instructions Instruction[]
+  tips         Tip[]
+
+  @@index([mealType])
+  @@index([difficulty])
+  @@index([mealGroup])
+}
+
+model Label {
+  id      String   @id @default(cuid())
+  name    String   @unique
+  recipes Recipe[]
+}
+
+model Ingredient {
+  id        String  @id @default(cuid())
+  name      String
+  amount    Float
+  unit      Unit
+
+  recipeId  String
+  recipe    Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@index([name])
+  @@index([recipeId])
+}
+
+model Instruction {
+  id          String  @id @default(cuid())
+  stepName    String
+  description String  @db.Text
+  order       Int
+
+  recipeId    String
+  recipe      Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@index([recipeId])
+  @@index([order])
+}
+
+
+model Tip {
+  id          String  @id @default(cuid())
+  name        String
+  description String  @db.Text
+
+  recipeId    String
+  recipe      Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@index([recipeId])
 }

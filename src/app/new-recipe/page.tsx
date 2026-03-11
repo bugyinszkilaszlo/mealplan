@@ -2,6 +2,7 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import * as z from 'zod';
 import styles from './page.module.css';
 import { Ingredient, Instruction, Tip } from '@/types/recipe';
@@ -17,12 +18,13 @@ const recipeFormSchema = z.object({
   imageUrl: z.string(),
   imageFile: z.instanceof(File).nullable(),
   imagePreview: z.string(),
-  prepTimeValue: z.number().min(1, 'Az előkészítési idő megadása kötelező'),
-  prepTimeUnit: z.enum(['perc', 'óra']),
-  cookTimeValue: z.number().min(1, 'A főzési idő megadása kötelező'),
-  cookTimeUnit: z.enum(['perc', 'óra']),
+  prepTime: z.string().min(1, 'Az előkészítési idő megadása kötelező'),
+  cookTime: z.string().min(1, 'A főzési idő megadása kötelező'),
+  mealGroup: z.string(),
+  mealType: z.string(),
+  labels: z.string().optional(),
   servings: z.number().min(1, 'Legalább 1 adag szükséges'),
-  difficulty: z.enum(['Könnyű', 'Közepes', 'Nehéz']),
+  difficulty: z.string(),
   ingredients: z
     .array(
       z.object({
@@ -51,6 +53,7 @@ const recipeFormSchema = z.object({
 type RecipeFormValues = z.infer<typeof recipeFormSchema>;
 
 const NewRecipe = () => {
+  const router = useRouter();
   const form = useForm<RecipeFormValues>({
     resolver: zodResolver(recipeFormSchema),
     defaultValues: {
@@ -58,12 +61,13 @@ const NewRecipe = () => {
       imageUrl: '',
       imageFile: null,
       imagePreview: '',
-      prepTimeValue: 30,
-      prepTimeUnit: 'perc',
-      cookTimeValue: 1,
-      cookTimeUnit: 'óra',
+        prepTime: '0',
+        cookTime: '0',
+        mealGroup: '',
+        mealType: '',
+        labels: '',
       servings: 1,
-      difficulty: 'Könnyű',
+        difficulty: '',
       ingredients: [{ name: '', unit: '', amount: 0 }],
       instructions: [{ title: '', description: '' }],
       tips: [{ title: '', description: '' }],
@@ -85,15 +89,52 @@ const NewRecipe = () => {
     }
   };
 
-  const handleSubmit = (data: RecipeFormValues) => {
-    const recipeData = {
-      ...data,
-      prepTime: `${data.prepTimeValue} ${data.prepTimeUnit}`,
-      cookTime: `${data.cookTimeValue} ${data.cookTimeUnit}`,
+  const handleSubmit = async (formData: RecipeFormValues) => {
+    const payload = {
+      name: formData.title,
+      mealGroup: formData.mealGroup,
+      mealType: formData.mealType,
+      difficulty: formData.difficulty,
+      prepTime: Number(formData.prepTime),
+      cookTime: Number(formData.cookTime),
+      portions: formData.servings,
+      imageUrl: formData.imageUrl,
+      labels: formData.labels ? formData.labels.split(',').map(s => s.trim()).filter(Boolean) : [],
+      ingredients: formData.ingredients.map(i => ({
+        name: i.name,
+        amount: i.amount,
+        unit: i.unit,
+      })),
+      instructions: formData.instructions.map((i, idx) => ({
+        stepName: i.title,
+        description: i.description,
+        order: idx + 1,
+      })),
+      tips: formData.tips.map(t => ({
+        name: t.title,
+        description: t.description,
+      })),
     };
 
-    console.log('Recipe data:', recipeData);
-    // TODO: Handle form submission (API call, file upload, etc.)
+    try {
+      const response = await fetch('/api/new-recipe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const error = await response.text();
+        console.error('Hiba a recept létrehozásakor:', error);
+        return;
+      }
+
+      const createdRecipe = await response.json();
+      console.log('Recept létrehozva:', createdRecipe);
+      router.push('/recipes');
+    } catch (err) {
+      console.error('Hálózati hiba:', err);
+    }
   };
 
   const addIngredient = () => {
@@ -181,33 +222,22 @@ const NewRecipe = () => {
         >
           <BasicInfoSection
             title={formData.title}
-            prepTimeValue={formData.prepTimeValue}
-            prepTimeUnit={formData.prepTimeUnit}
-            cookTimeValue={formData.cookTimeValue}
-            cookTimeUnit={formData.cookTimeUnit}
+            prepTime={formData.prepTime}
+            cookTime={formData.cookTime}
             servings={formData.servings}
             difficulty={formData.difficulty}
+            mealGroup={formData.mealGroup}
+            mealType={formData.mealType}
+            labels={formData.labels}
             imagePreview={formData.imagePreview}
             onTitleChange={(value) => form.setValue('title', value)}
-            onPrepTimeValueChange={(value) =>
-              form.setValue('prepTimeValue', value)
-            }
-            onPrepTimeUnitChange={(value) =>
-              form.setValue('prepTimeUnit', value)
-            }
-            onCookTimeValueChange={(value) =>
-              form.setValue('cookTimeValue', value)
-            }
-            onCookTimeUnitChange={(value) =>
-              form.setValue('cookTimeUnit', value)
-            }
+            onPrepTimeChange={(value) => form.setValue('prepTime', value)}
+            onCookTimeChange={(value) => form.setValue('cookTime', value)}
             onServingsChange={(value) => form.setValue('servings', value)}
-            onDifficultyChange={(value) =>
-              form.setValue(
-                'difficulty',
-                value as RecipeFormValues['difficulty'],
-              )
-            }
+            onDifficultyChange={(value) => form.setValue('difficulty', value)}
+            onMealGroupChange={(value) => form.setValue('mealGroup', value)}
+            onMealTypeChange={(value) => form.setValue('mealType', value)}
+            onLabelsChange={(value) => form.setValue('labels', value)}
             onImageChange={handleImageChange}
           />
 

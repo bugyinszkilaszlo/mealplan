@@ -3,12 +3,14 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export async function proxy(req: NextRequest) {
-  const url = req.nextUrl.clone()
-
   const session = await auth.api.getSession({ headers: req.headers })
+
   if (!session) {
-    url.pathname = '/login'
-    return NextResponse.redirect(url)
+    const loginUrl = new URL('/login', req.url)
+    const returnTo = req.nextUrl.pathname + req.nextUrl.search
+    loginUrl.searchParams.set('callbackUrl', returnTo)
+
+    return NextResponse.redirect(loginUrl)
   }
 
   return NextResponse.next()

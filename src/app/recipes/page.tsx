@@ -5,6 +5,7 @@ import MealCard from '@/components/ui/custom/MealCard';
 import Filter, { type FilterState } from '@/components/pages/recipes/Filter';
 import styles from './page.module.css';
 import recipesData from './recipes.json';
+import Link from 'next/link';
 
 export default function RecipesPage() {
   const [activeFilters, setActiveFilters] = useState<FilterState>({
@@ -50,6 +51,12 @@ export default function RecipesPage() {
             onFilterChange={handleFilterChange}
             filteredCount={filteredData.length}
           />
+          <Link
+            href='/new-recipe'
+            className={`${styles.btn} ${styles.btnPrimary}`}
+          >
+            Új recept hozzáadása
+          </Link>
         </aside>
         <div className={styles.content}>
           <ul className={styles.grid}>
